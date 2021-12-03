@@ -1,4 +1,4 @@
-<template>
+<template id="template">
   <div id="app">
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
@@ -7,3 +7,5 @@
     <router-view />
   </div>
 </template>
+<style>
+</style>
