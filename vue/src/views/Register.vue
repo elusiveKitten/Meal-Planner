@@ -1,14 +1,18 @@
 <template>
 <div id="container">
-  <h1>Register For A Meal Planner Account</h1>
-  <img id="plateimg" src="@/views/plate.png" alt="no image found" />
-  <div id="register" class="text-center">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+  <h1>Register For A Meal Planner Account </h1>
+ 
+  <div id="register">
     <form class="form-register" @submit.prevent="register">
-      <h2 class="h3 mb-3 font-weight-normal">Create Account</h2>
+      <h2>Create Account</h2>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <p for="username">Username</p>
       <div class="divInput">
       <input
         type="text"
@@ -20,7 +24,7 @@
         autofocus
       />
       </div>
-      <label for="password" class="sr-only">Password</label>
+      <p for="password">Password</p>
       <div class="divInput">
       <input
         type="password"
@@ -31,6 +35,7 @@
         required
       />
       </div>
+      <p for="confirm-password">Confirm Password</p>
       <div class="divInput">
       <input
         type="password"
@@ -40,11 +45,9 @@
         v-model="user.confirmPassword"
         required
       />
+      <input type="submit" name="submit" value="Create An Account">
       </div>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
-      </button>
+      <router-link :to="{ name: 'login' }">Already have an account? Click here.</router-link>
     </form>
   </div>
 </div>
@@ -101,20 +104,24 @@ export default {
 </script>
 
 <style scoped>
+#container{
+  background-image: url('https://wallpaperaccess.com/full/271679.jpg%27');
+  width:1920px;
+  height:1080px
+}
 h1{
   display:flex;
   justify-content: center;
-  font-size: 30px;
+  font-size: 60px;
   font-weight: bold;
-  color: hsl(240, 6%, 37%)
+  color: hsl(240, 6%, 37%);
+  font-family: 'Sacramento', cursive;
+  color:#edeeeb;
+  text-shadow: 2px 2px  #1db429;
+  
 }
-#plateimg{
-  display:flex;
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  height: 4cm;
+h2{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 #register {
   height: 7.2cm;
