@@ -1,51 +1,55 @@
 <template>
-  <div id="container">
-    <header>
-      <h1>Login to Your Meal Planner</h1>
-    </header>
-    <img id="plateimg" src="@/views/plate.png" alt="no image found" />
-    <div id="login">
-      <form class="form-signin" @submit.prevent="login">
-        <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
-        <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
-          Invalid username and password!
-        </div>
-        <div
-          class="alert alert-success"
-          role="alert"
-          v-if="this.$route.query.registration"
-        >
-          Thank you for registering, please sign in.
-        </div>
-        <label for="username" class="sr-only">Username</label>
-        <div class="divInput">
-          <input
-            type="text"
-            id="username"
-            class="form-control"
-            placeholder="Username"
-            v-model="user.username"
-            required
-            autofocus
-          />
-        </div>
-        <label for="password" class="sr-only">Password</label>
-        <div class="divInput">
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            placeholder="Password"
-            v-model="user.password"
-            required
-          />
-        </div>
-        <router-link :to="{ name: 'register' }">Need an account?</router-link>
-        <button type="submit">Sign in</button>
-        <br />
-      </form>
+    <div id="container">
+      <header>
+        <h1>Login to Your Meal Planner</h1>
+      </header>
+      <img id="plateimg" src="@/views/plate.png" alt="no image found" />
+      <div id="login">
+        <form class="form-signin" @submit.prevent="login">
+          <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            v-if="invalidCredentials"
+          >
+            Invalid username and password!
+          </div>
+          <div
+            class="alert alert-success"
+            role="alert"
+            v-if="this.$route.query.registration"
+          >
+            Thank you for registering, please sign in.
+          </div>
+          <label for="username" class="sr-only">Username</label>
+          <div class="divInput">
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              placeholder="Username"
+              v-model="user.username"
+              required
+              autofocus
+            />
+          </div>
+          <label for="password" class="sr-only">Password</label>
+          <div class="divInput">
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              placeholder="Password"
+              v-model="user.password"
+              required
+            />
+          </div>
+          <router-link :to="{ name: 'register' }">Need an account?</router-link>
+          <button type="submit">Sign in</button>
+          <br />
+        </form>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -93,13 +97,13 @@ h1 {
   font-weight: bold;
   color: #614811;
 }
- #plateimg {
+#plateimg {
   grid-area: img;
   margin-bottom: 1%;
   margin-top: 1%;
   display: flex;
   align-items: center;
-  align-content:center;
+  align-content: center;
   justify-content: center;
   height: 50%;
 }
@@ -110,14 +114,17 @@ header {
   grid-area: header;
 }
 #container {
+  background-image: url('https://wallpaperaccess.com/full/271679.jpg');
+  background-size: 1920px;
+  width:1920px;
+  height:1080px;
   display: grid;
   grid-column-gap: 20px;
   grid-template-columns: 1fr;
   grid-template-areas:
     "header"
     "img"
-    "login"
-    ;
+    "login";
 }
 #login {
   grid-area: login;
