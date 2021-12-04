@@ -249,7 +249,6 @@ footer{
         <br />
       </form>
     </div>
-  </div>
 </template>
 
 <script>
