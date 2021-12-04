@@ -1,7 +1,7 @@
 <template>
 <div id="container">
   <h1>Register For A Meal Planner Account</h1>
-  <img id="plateimg" src="plate.png" alt="no image found" />
+  <img id="plateimg" src="@/views/plate.png" alt="no image found" />
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h2 class="h3 mb-3 font-weight-normal">Create Account</h2>
