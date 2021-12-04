@@ -1,8 +1,10 @@
 <template>
   <div id="container">
-    <h1>Login to Your Meal Planner</h1>
-    <img id="plateimg" src="plate.png" alt="no image found" />
-    <div id="login" class="text-center">
+    <header>
+      <h1>Login to Your Meal Planner</h1>
+    </header>
+    <img id="plateimg" src="@/views/plate.png" alt="no image found" />
+    <div id="login">
       <form class="form-signin" @submit.prevent="login">
         <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
         <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
@@ -83,33 +85,47 @@ export default {
   },
 };
 </script>
-<style scoped>
-h1{
-  display:flex;
+<style>
+h1 {
+  display: flex;
   justify-content: center;
   font-size: 30px;
   font-weight: bold;
-  color: #614811
+  color: #614811;
 }
-#plateimg{
-  display:flex;
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  height: 4cm;
+ #plateimg {
+  grid-area: img;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  display: flex;
+  align-items: center;
+  align-content:center;
+  justify-content: center;
+  height: 50%;
+}
+
+header {
+  margin-bottom: 1px;
+  margin-top: 1px;
+  grid-area: header;
+}
+#container {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "img"
+    "login"
+    ;
 }
 #login {
-  height: 6.1cm;
-  width: 6cm;
+  grid-area: login;
+  height: 50vh;
+  width: 50vh;
   display: flex;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  border: 5px solid hsl(240, 6%, 37%);
-  flex-wrap: wrap;
-  justify-content: center;
+  border: groove 0.2em hsl(240, 6%, 37%);
+  border-radius: 2em;
   background-color: aliceblue;
 }
 .form-signin {
@@ -120,12 +136,22 @@ h1{
 .form-control {
 }
 .divInput {
-  padding-bottom: 15px;
+  padding-bottom: 1vh;
 }
-/* @media screen and (min-width: 768px){
-    #login{
-      margin-left: 45%;
-      margin-right: 45%;
-    }
-} */
+@media (max-height: 1024px) {
+  #login {
+    grid-area: login;
+    height: 25vh;
+    width: 25vh;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border: groove 0.2em hsl(240, 6%, 37%);
+    border-radius: 2em;
+    justify-content: center;
+    background-color: aliceblue;
+  }
+}
 </style>
