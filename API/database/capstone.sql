@@ -55,7 +55,7 @@ CREATE TABLE recipe_ingredients (
 	recipe_id INT NOT NULL,
 	ingredient_id INT NOT NULL,
 	amount INT NOT NULL,
-	unit VARCHAR(50) NOT NULL,
+	unit VARCHAR(100) NOT NULL,
 	CONSTRAINT PK_recipe_ingredients PRIMARY KEY (recipe_id, ingredient_id),
 	CONSTRAINT FK_recipe_ingredients_recipes FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
 	CONSTRAINT FK_recipe_ingredients_users FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id)
@@ -93,27 +93,30 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','Yh
 INSERT INTO category (category_name) VALUES ('Vegetarian');
 INSERT INTO category (category_name) VALUES ('Easy');
 
-INSERT INTO ingredients (name) VALUES ('Chicken');
-INSERT INTO ingredients (name) VALUES ('Rice');
-INSERT INTO ingredients (name) VALUES ('Garbanzo Beans');
-INSERT INTO ingredients (name) VALUES ('Green Beans');
-INSERT INTO ingredients (name) VALUES ('Butternut Squash');
-INSERT INTO ingredients (name) VALUES ('Salmon');
-INSERT INTO ingredients (name) VALUES ('Shredded Cheese');
-INSERT INTO ingredients (name) VALUES ('Potato');
-INSERT INTO ingredients (name) VALUES ('Onion');
-INSERT INTO ingredients (name) VALUES ('Tomato');
-INSERT INTO ingredients (name) VALUES ('Red Enchilada Sauce');
-INSERT INTO ingredients (name) VALUES ('Flour Tortilla');
-INSERT INTO ingredients (name) VALUES ('Ground Beef');
-INSERT INTO ingredients (name) VALUES ('Tomato');
-INSERT INTO ingredients (name) VALUES ('Penne Pasta');
-INSERT INTO ingredients (name) VALUES ('Broccoli');
-INSERT INTO ingredients (name) VALUES ('Alfredo Sauce');
-INSERT INTO ingredients (name) VALUES ('Lasagna Noodles');
-INSERT INTO ingredients (name) VALUES ('Part-Skim Ricotta Cheese');
-INSERT INTO ingredients (name) VALUES ('Pasta Sauce');
-INSERT INTO ingredients (name) VALUES ('Mixed Veggies');
+INSERT INTO ingredients (name)
+VALUES ('Chicken'),
+('Rice'),
+('Garbanzo Beans'),
+('Green Beans'),
+('Butternut Squash'),
+('Salmon'),
+('Shredded Mexican Blend Cheese'),
+('Shredded Cheddar Cheese'),
+('Potato'),
+('Onion'),
+('Tomato'),
+('Red Enchilada Sauce'),
+('Flour Tortilla'),
+('Ground Beef'),
+('Tomato'),
+('Penne Pasta'),
+('Broccoli'),
+('Alfredo Sauce'),
+('Lasagna Noodles'),
+('Ricotta Cheese'),
+('Pasta Sauce'),
+('Mixed Veggies'),
+('Mozzarella Cheese');
 
 INSERT INTO recipes (category, recipe_name, type, instructions)
 VALUES ('Easy', 'Easy Cheesy Ground Beef Enchiladas','Main Meal','Heat oven to 375°. Brown ground beef until thoroughly cooked; drain. Stir in 3/4 cup enchilada sauce and one cup of cheese.
@@ -122,4 +125,18 @@ INSERT INTO recipes (category, recipe_name, type, instructions)
 VALUES ('Vegetarian', 'Vegetable Lasagna', 'Main Meal','Preheat oven to 350°F. Spread a thin layer of sauce on the bottom of a 9"x13" casserole. Cover with a layer of noodles (3 or 4 noodles should be enough). Place ricotta in a bowl and add about 1/4 cup of water, stirring until blended. Spread 1/3 of this mixture over the pasta (you can use a cake spatula).
 Spread 1/3 of the remaining pasta sauce over the cheese. Spread 1/3 of the vegetables over the sauce. Sprinkle 1/3 of the mozzarella over the veggies. Repeat twice starting with the noodles and ending with the mozzarella. Cover and bake until the noodles are tender (35 to 40 minutes). Remove cover and bake 5 minutes until cheese starts to become golden. Remove from oven and allow to stand for 5 minutes before cutting into squares.');
 
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id,amount,unit)
+VALUES
+	(1,14,1,'lb'),
+	(1,12,1,'10 oz can'),
+	(1,7,8,'oz'),
+	(1,8,8,'oz'),
+	(1,13,12,'6"');
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id,amount,unit)
+VALUES
+	(2,21,1,'28 oz jar'),
+	(2,19,8,'oz'),
+	(2,20,15,'oz'),
+	(2,22,3,'cups'),
+	(2,23,8,'oz');
 
