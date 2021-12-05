@@ -24,17 +24,19 @@ CREATE TABLE users (
 	user_role varchar(50) NOT NULL
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
---create recipes table - nb
+--create recipes table
 CREATE TABLE recipes (
 	recipe_id INT IDENTITY(1,1) NOT NULL,
-	user_id INT NOT NULL,
+	--user_id INT NULL,
+	category VARCHAR(50) NULL,
 	recipe_name VARCHAR(200) NOT NULL,
-	directions VARCHAR(2000) NOT NULL,
+	type VARCHAR(100) NOT NULL,
+	instructions VARCHAR(2000) NOT NULL,
 
 	CONSTRAINT PK_recipes PRIMARY KEY (recipe_id),
-	CONSTRAINT fk_recipes FOREIGN KEY (user_id) REFERENCES users(user_id)
+	--CONSTRAINT FK_recipes_users FOREIGN KEY (user_id) REFERENCES users(user_id),
 );
---create recipes_users table - nb
+--create recipes_users table
 CREATE TABLE recipes_users (
 	recipe_id INT IDENTITY (1,1) NOT NULL,
 	user_id INT NOT NULL,
@@ -42,27 +44,29 @@ CREATE TABLE recipes_users (
 	CONSTRAINT FK_recipes_users_recipes FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
 	CONSTRAINT FK_recipes_users_users FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
---create ingredients table - nb
+--create ingredients table
 CREATE TABLE ingredients (
 	ingredient_id INT IDENTITY (1,1) NOT NULL,
 	name VARCHAR(100) NOT NULL,
-	category VARCHAR(100) NULL,
 	CONSTRAINT PK_ingredients PRIMARY KEY (ingredient_id)
 );
+--create table to connect recipes and ingredients
 CREATE TABLE recipe_ingredients (
 	recipe_id INT NOT NULL,
 	ingredient_id INT NOT NULL,
 	amount INT NOT NULL,
 	unit VARCHAR(50) NOT NULL,
 	CONSTRAINT PK_recipe_ingredients PRIMARY KEY (recipe_id, ingredient_id),
-	CONSTRAINT FK_recipes_ingredients_recipes FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
-	CONSTRAINT FK_recipes_ingredients_users FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id)
+	CONSTRAINT FK_recipe_ingredients_recipes FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
+	CONSTRAINT FK_recipe_ingredients_users FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id)
 );
+--create category table
 CREATE TABLE category (
 	category_id INT IDENTITY (1,1) NOT NULL,
 	category_name VARCHAR(100) NOT NULL,
 	CONSTRAINT PK_category PRIMARY KEY (category_id)
 );
+--create meal_plan table
 CREATE TABLE meal_plan (
 	meal_plan_id INT IDENTITY (1,1) NOT NULL,
 	recipe_id INT NOT NULL,
@@ -72,6 +76,7 @@ CREATE TABLE meal_plan (
 	CONSTRAINT FK_meal_plan_recipes FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
 	CONSTRAINT FK_meal_plan_users FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+--create grocery_list table
 CREATE TABLE grocery_list (
 	grocery_list_id INT IDENTITY (1,1) NOT NULL,
 	user_id INT NOT NULL,
@@ -86,5 +91,35 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','Yh
 
 --GO
 INSERT INTO category (category_name) VALUES ('Vegetarian');
-INSERT INTO category (category_name) VALUES ('Keto');
-INSERT INTO category (category_name) VALUES ('Gluten-Free');
+INSERT INTO category (category_name) VALUES ('Easy');
+
+INSERT INTO ingredients (name) VALUES ('Chicken');
+INSERT INTO ingredients (name) VALUES ('Rice');
+INSERT INTO ingredients (name) VALUES ('Garbanzo Beans');
+INSERT INTO ingredients (name) VALUES ('Green Beans');
+INSERT INTO ingredients (name) VALUES ('Butternut Squash');
+INSERT INTO ingredients (name) VALUES ('Salmon');
+INSERT INTO ingredients (name) VALUES ('Shredded Cheese');
+INSERT INTO ingredients (name) VALUES ('Potato');
+INSERT INTO ingredients (name) VALUES ('Onion');
+INSERT INTO ingredients (name) VALUES ('Tomato');
+INSERT INTO ingredients (name) VALUES ('Red Enchilada Sauce');
+INSERT INTO ingredients (name) VALUES ('Flour Tortilla');
+INSERT INTO ingredients (name) VALUES ('Ground Beef');
+INSERT INTO ingredients (name) VALUES ('Tomato');
+INSERT INTO ingredients (name) VALUES ('Penne Pasta');
+INSERT INTO ingredients (name) VALUES ('Broccoli');
+INSERT INTO ingredients (name) VALUES ('Alfredo Sauce');
+INSERT INTO ingredients (name) VALUES ('Lasagna Noodles');
+INSERT INTO ingredients (name) VALUES ('Part-Skim Ricotta Cheese');
+INSERT INTO ingredients (name) VALUES ('Pasta Sauce');
+INSERT INTO ingredients (name) VALUES ('Mixed Veggies');
+
+INSERT INTO recipes (category, recipe_name, type, instructions)
+VALUES ('Easy', 'Easy Cheesy Ground Beef Enchiladas','Main Meal','Heat oven to 375°. Brown ground beef until thoroughly cooked; drain. Stir in 3/4 cup enchilada sauce and one cup of cheese.
+Spoon meat mixture onto tortillas roll-up and place seam-side down in lightly greased baking dish. Pour remaining enchilada sauce over top. Cover with remaining cheese. Bake for 15 to 20 minutes or until cheese melts. Serve with yellow rice and refried beans. Garnish with sour cream, salsa, and lettuce.');
+INSERT INTO recipes (category, recipe_name, type, instructions)
+VALUES ('Vegetarian', 'Vegetable Lasagna', 'Main Meal','Preheat oven to 350°F. Spread a thin layer of sauce on the bottom of a 9"x13" casserole. Cover with a layer of noodles (3 or 4 noodles should be enough). Place ricotta in a bowl and add about 1/4 cup of water, stirring until blended. Spread 1/3 of this mixture over the pasta (you can use a cake spatula).
+Spread 1/3 of the remaining pasta sauce over the cheese. Spread 1/3 of the vegetables over the sauce. Sprinkle 1/3 of the mozzarella over the veggies. Repeat twice starting with the noodles and ending with the mozzarella. Cover and bake until the noodles are tender (35 to 40 minutes). Remove cover and bake 5 minutes until cheese starts to become golden. Remove from oven and allow to stand for 5 minutes before cutting into squares.');
+
+
