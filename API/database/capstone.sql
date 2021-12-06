@@ -24,13 +24,11 @@ CREATE TABLE users (
 	user_role varchar(50) NOT NULL
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
+
 --create recipes table
 CREATE TABLE recipes (
 	recipe_id INT IDENTITY(1,1) NOT NULL,
-	--user_id INT NULL,
-	category VARCHAR(50) NULL,
 	recipe_name VARCHAR(200) NOT NULL,
-	type VARCHAR(100) NOT NULL,
 	instructions VARCHAR(2000) NOT NULL,
 
 	CONSTRAINT PK_recipes PRIMARY KEY (recipe_id),
@@ -66,15 +64,18 @@ CREATE TABLE category (
 	category_name VARCHAR(100) NOT NULL,
 	CONSTRAINT PK_category PRIMARY KEY (category_id)
 );
+--relational category-recipes
+CREATE TABLE recipe_category(
+	recipe_id INT NOT NULL,
+	category_id INT NOT NULL,
+	CONSTRAINT FK_recipe_category_recipes FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
+	CONSTRAINT FK_recipe_category_category FOREIGN KEY (category_id) REFERENCES category(category_id)
+);
 --create meal_plan table
 CREATE TABLE meal_plan (
 	meal_plan_id INT IDENTITY (1,1) NOT NULL,
-	recipe_id INT NOT NULL,
-	user_id INT NOT NULL,
 	name VARCHAR(100) NOT NULL,
 	CONSTRAINT PK_meal_plan PRIMARY KEY (meal_plan_id),
-	CONSTRAINT FK_meal_plan_recipes FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
-	CONSTRAINT FK_meal_plan_users FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 --create grocery_list table
 CREATE TABLE grocery_list (
@@ -83,6 +84,35 @@ CREATE TABLE grocery_list (
 	name VARCHAR(100) NOT NULL,
 	CONSTRAINT PK_grocery_list PRIMARY KEY (grocery_list_id),
 	CONSTRAINT FK_grocery_list FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+CREATE TABLE user_groceries(
+	grocery_list_id INT NOT NULL,
+	ingredient_id INT NOT NULL,
+	CONSTRAINT FK_user_groceries_grocery_list FOREIGN KEY(grocery_list_id) REFERENCES grocery_list(grocery_list_id),
+	CONSTRAINT FK_user_groceries_ingredients FOREIGN KEY(ingredient_id) REFERENCES ingredients(ingredient_id)
+);
+CREATE TABLE meal_plan_user(
+	meal_plan_id INT NOT NULL,
+	user_id INT NOT NULL,
+	CONSTRAINT FK_meal_plan_user_meal_plan FOREIGN KEY (meal_plan_id) REFERENCES meal_plan(meal_plan_id),
+	CONSTRAINT FK_meal_plan_user_users FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+CREATE TABLE meal_plan_recipe(
+	meal_plan_id INT NOT NULL,
+	recipe_id INT NOT NULL,
+	CONSTRAINT FK_meal_plan_recipe_meal_plan FOREIGN KEY (meal_plan_id) REFERENCES meal_plan(meal_plan_id),
+	CONSTRAINT FK_meal_plan_recipe_recipes FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id)
+);
+CREATE TABLE dish_type(
+	dish_type_id INT IDENTITY(1,1) NOT NULL,
+	dish_type_name VARCHAR(100) NOT NULL,
+	CONSTRAINT PK_dish_type PRIMARY KEY (dish_type_id)
+);
+CREATE TABLE recipe_dish_type(
+	dish_type_id INT NOT NULL,
+	recipe_id INT NOT NULL,
+	CONSTRAINT FK_recipe_dish_type_dish_type FOREIGN KEY (dish_type_id) REFERENCES dish_type(dish_type_id),
+	CONSTRAINT FK_recipe_dish_type_recipes FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id)
 );
 
 --populate default data
@@ -118,11 +148,11 @@ VALUES ('Chicken'),
 ('Mixed Veggies'),
 ('Mozzarella Cheese');
 
-INSERT INTO recipes (category, recipe_name, type, instructions)
-VALUES ('Easy', 'Easy Cheesy Ground Beef Enchiladas','Main Meal','Heat oven to 375°. Brown ground beef until thoroughly cooked; drain. Stir in 3/4 cup enchilada sauce and one cup of cheese.
+INSERT INTO recipes (recipe_name, instructions)
+VALUES ('Easy Cheesy Ground Beef Enchiladas','Heat oven to 375°. Brown ground beef until thoroughly cooked; drain. Stir in 3/4 cup enchilada sauce and one cup of cheese.
 Spoon meat mixture onto tortillas roll-up and place seam-side down in lightly greased baking dish. Pour remaining enchilada sauce over top. Cover with remaining cheese. Bake for 15 to 20 minutes or until cheese melts. Serve with yellow rice and refried beans. Garnish with sour cream, salsa, and lettuce.');
-INSERT INTO recipes (category, recipe_name, type, instructions)
-VALUES ('Vegetarian', 'Vegetable Lasagna', 'Main Meal','Preheat oven to 350°F. Spread a thin layer of sauce on the bottom of a 9"x13" casserole. Cover with a layer of noodles (3 or 4 noodles should be enough). Place ricotta in a bowl and add about 1/4 cup of water, stirring until blended. Spread 1/3 of this mixture over the pasta (you can use a cake spatula).
+INSERT INTO recipes (recipe_name, instructions)
+VALUES ('Vegetable Lasagna', 'Preheat oven to 350°F. Spread a thin layer of sauce on the bottom of a 9"x13" casserole. Cover with a layer of noodles (3 or 4 noodles should be enough). Place ricotta in a bowl and add about 1/4 cup of water, stirring until blended. Spread 1/3 of this mixture over the pasta (you can use a cake spatula).
 Spread 1/3 of the remaining pasta sauce over the cheese. Spread 1/3 of the vegetables over the sauce. Sprinkle 1/3 of the mozzarella over the veggies. Repeat twice starting with the noodles and ending with the mozzarella. Cover and bake until the noodles are tender (35 to 40 minutes). Remove cover and bake 5 minutes until cheese starts to become golden. Remove from oven and allow to stand for 5 minutes before cutting into squares.');
 
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id,amount,unit)
@@ -139,4 +169,5 @@ VALUES
 	(2,20,15,'oz'),
 	(2,22,3,'cups'),
 	(2,23,8,'oz');
+
 
