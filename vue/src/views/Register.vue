@@ -48,7 +48,9 @@
         v-model="user.confirmPassword"
         required
       />
-      <button @click="$router.push('login')" type="submit">Create An Account</button>
+      <!--<button @click="$router.push('login')" type="submit">Create An Account</button>-->
+      <!--<router-link :to="{ name: 'login' }" class="button">Create An Account</router-link>-->
+      <input type="submit" name="submit" value="Create An Account">
       </div>
       <router-link :to="{ name: 'login' }">Already have an account? Click here.</router-link>
     </form>
@@ -61,7 +63,7 @@
 
 <script>
 import authService from '../services/AuthService';
-
+import "bulma/css/bulma.css";
 export default {
   name: 'register',
   data() {
@@ -206,7 +208,7 @@ left: 24px;
   height: 40px;
   font-size: 16px;
 }
-#register button[type="submit"]{/*the Create an acct button at bottom of form*/
+#register input[type="submit"]{/*the Create an acct button at bottom of form*/
   border: none;
   border-radius: 19px;
   margin-bottom: 10px;
@@ -219,7 +221,7 @@ left: 24px;
   display: inline-block;
   font-weight: bold;
 }
-#register button[type="submit"]:hover{/*hovering over the create account button changes it's color*/
+#register input[type="submit"]:hover{/*hovering over the create account button changes it's color*/
   background: #a9b3b4;
   cursor: pointer;
 }
