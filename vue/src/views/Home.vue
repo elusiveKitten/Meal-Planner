@@ -20,8 +20,8 @@ export default {
 <style>
 .home{
   height: 100vh;
-  background-image: url('https://kitchenseer.com/wp-content/uploads/2021/06/An-up-close-and-detailed-photo-of-a-wooden-chopping-board-1200x800.jpg');
-  background-size: 100vw 100vh;}
+  background-image: url('https://cdn.rcimg.net/meitanteikudo/a5d5b507/5f28b9be7d71464801b30d31f9ba12ac.jpeg');
+  background-size: cover;}
   section {
     left: 0;
     line-height: 200px;

@@ -18,7 +18,9 @@
       <input type="text" id="username" class="form-control" name="username" placeholder="Username" v-model="user.username" required autofocus />
       <p for="password">Password</p>
       <input type="password" id="password" class="form-control" name="password" placeholder="Password" v-model="user.password" required />
-      <button @click="$router.push('/')" type="submit" name="submit">Login</button>
+      <!--<button @click="$router.push('/')" type="submit" name="submit">Login</button>-->
+      <!--<router-link :to="{name: 'home'}" class="button">Login</router-link>-->
+      <input type="submit" name="submit" value="Login">
       <router-link :to="{ name: 'register' }">Not a Member? Register Here!</router-link>
     </form>
     </div>
@@ -30,6 +32,7 @@
 
 <script>
 import authService from "../services/AuthService";
+import "bulma/css/bulma.css";
 
 export default {
   name: "login",
@@ -112,7 +115,7 @@ body{
 }
 #login-box{/*the transparent box*/
    width: 320px;
-    height: 420px;
+    height: 450px;
     background: rgba(0,0,0,0.5);
     color: #ffffff;
     padding: 0px 30px;
@@ -175,7 +178,7 @@ input[type="password"]{
     font-size: 16px;
 }
 
-#login-box button[type="submit"]{/*the Login button at bottom of form*/
+#login-box input[type="submit"]{/*the Login button at bottom of form*/
     border: none;
     border-radius: 19px;
     font-weight: bold;
@@ -189,7 +192,7 @@ input[type="password"]{
     text-align: center;
 }
 
-#login-box button[type="submit"]:hover{/*hovering over the Login button changes its color*/
+#login-box input[type="submit"]:hover{/*hovering over the Login button changes its color*/
     background: #A9B3B4;
     cursor: pointer;
 }
@@ -200,6 +203,9 @@ input[type="password"]{
 
 #login-box a:hover{/*When you hover over the hyperlink to register it shows up green*/
     color: #1db429;
+}
+.alert .alert-success{
+  margin-top: -10px;
 }
 footer{
   grid-area: footer;
