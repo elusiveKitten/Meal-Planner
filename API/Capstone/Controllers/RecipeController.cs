@@ -1,4 +1,5 @@
 ﻿using Capstone.DAO;
+using Capstone.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,7 +23,7 @@ namespace Capstone.Controllers
         [HttpGet("all")]
         public IActionResult GetAllRecipes()
         {
-            List<string> allRecipes = recipeDao.GetAllRecipes();
+            List<Recipe> allRecipes = recipeDao.GetAllRecipes();
             if(allRecipes!=null)
             {
                 return Ok(allRecipes);
