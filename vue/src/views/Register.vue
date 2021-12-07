@@ -1,14 +1,21 @@
 <template>
-<div id="container">
-  <h1>Register For A Meal Planner Account</h1>
-  <img id="plateimg" src="@/views/plate.png" alt="no image found" />
-  <div id="register" class="text-center">
+<div class="background-img">
+<div class="container">
+<div class="header">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+  <h1>Register For A Meal Planner Account </h1>
+ 
+  <div id="register">
+    <div class="icon-box">
+      <i class="fas fa-plus"></i>
     <form class="form-register" @submit.prevent="register">
-      <h2 class="h3 mb-3 font-weight-normal">Create Account</h2>
+      <h2>Create Account</h2>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <p for="username">Username</p>
       <div class="divInput">
       <input
         type="text"
@@ -20,7 +27,7 @@
         autofocus
       />
       </div>
-      <label for="password" class="sr-only">Password</label>
+      <p for="password">Password</p>
       <div class="divInput">
       <input
         type="password"
@@ -31,6 +38,7 @@
         required
       />
       </div>
+      <p for="confirm-password">Confirm Password</p>
       <div class="divInput">
       <input
         type="password"
@@ -40,19 +48,20 @@
         v-model="user.confirmPassword"
         required
       />
+      <button @click="$router.push('login')" type="submit">Create An Account</button>
       </div>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
-      </button>
+      <router-link :to="{ name: 'login' }">Already have an account? Click here.</router-link>
     </form>
   </div>
+</div>
+</div>
+</div>
 </div>
 </template>
 
 <script>
 import authService from '../services/AuthService';
-import "bulma/css/bulma.css";
+
 export default {
   name: 'register',
   data() {
@@ -101,39 +110,127 @@ export default {
 </script>
 
 <style scoped>
-h1{
+.background-img{
+    background-image:url('https://cdn.discordapp.com/attachments/916348750774013963/917534560487637042/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+body{
+  margin: 0;
+  padding: 0;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+  "header header header header"
+  ". register-box register-box ."
+  ". register-box register-box ."
+  "footer footer footer footer";
+  justify-content: center;
+  align-items: center;
+}
+.header{
+  grid-area: header;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+h1{/*The Register For A Meal Planner Acct msg*/
   display:flex;
   justify-content: center;
-  font-size: 30px;
+  font-size: 60px;
   font-weight: bold;
-  color: hsl(240, 6%, 37%)
+  font-family: 'Sacramento', cursive;
+  color:#edeeeb;
+  text-shadow: 2px 2px 10px #010e02;
+  
 }
-#plateimg{
-  display:flex;
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  height: 4cm;
-}
-#register {
-  height: 7.2cm;
-  width: 6.2cm;
+h2{/* the Create Acct msg*/
+  margin-top: -30px;
+  margin-bottom: 25px;
+  padding:0px;
+  text-align:center;
+  font-size:27px;
   display: flex;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  border: 5px solid hsl(240, 6%, 37%);
-  flex-wrap: wrap;
-  justify-content: center;
-  background-color: aliceblue;
-}
-.form-register {
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+#register {/*the transparent box*/
+  width: 320px;
+  height: 420px;
+  background: rgba(0,0,0,0.5);
+  color: #ffffff;
+  padding: 290px 30px;
+  border-radius: 5px;
+  grid-area: register-box;
+  margin-top: 100px;
+  margin-left: calc(50% - 160px);
+}
+#register .icon-box{/*the round "box" that the + is in*/
+background:  #56aa54;
+width: 100px;
+height: 100px;
+border-radius: 50%;
+position:relative;
+display: flex;
+justify-content: center;
+align-items: center;
+top: -335px;
+left:calc(50% - 50px)
+}
+#register .icon-box .fas{/* the plus sign*/
+font-size: 60px;
+position: absolute;
+top: 17px;
+left: 24px;
+}
+.form-register {/*the form where all words are*/
+  margin-top: 620px;
+
+}
+#register p{/*Username/Password/Confirm Pword visible words*/
+  margin: 0px;
+  padding: 0px;
+  font-weight: bold;
+  font-size: 18px;
+}
+#register input{/* the form input boxes*/
+  width: 100%;
+  margin-bottom: 20px;
+}
+#register input[type="text"], input[type="password"]{/*makes the input boxes transparent instead of white*/
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  height: 40px;
+  font-size: 16px;
+}
+#register button[type="submit"]{/*the Create an acct button at bottom of form*/
+  border: none;
+  border-radius: 19px;
+  margin-bottom: 10px;
+  height: 40px;
+  width: 250px;
+  background: #56aa54;
+  color: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  display: inline-block;
+  font-weight: bold;
+}
+#register button[type="submit"]:hover{/*hovering over the create account button changes it's color*/
+  background: #a9b3b4;
+  cursor: pointer;
+}
+#register a{/*Changes hyperlink from blue to something more visible*/
+  color: #ffffff;
+}
+#register a:hover{/*already have an acct link changes color on hover*/
+  color: #1db429;
+}
+
+
 .form-control {
 }
 .divInput {
