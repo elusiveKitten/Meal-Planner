@@ -3,7 +3,6 @@
   <div class="home">
     <nav-bar />
     <body>
-    <section>
       <h1>Welcome to Meal Planner!</h1>
     </body>
   </div>

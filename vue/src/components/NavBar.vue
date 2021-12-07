@@ -39,22 +39,34 @@
               >Home</router-link
             >&nbsp;&nbsp;
           </div>
-          <div class="navbar-item">
-            <a class="button is-warning has-text-grey">My Meal Plans</a>
-          </div>
-          <div
-            class="navbar-item has-dropdown is-hoverable has-background-warning"
+                    <div
+            id="recipe-dropdown" class="navbar-item has-dropdown is-hoverable has-background-warning"
           >
             <a class="navbar-link"> Recipes </a>
 
             <div class="navbar-dropdown has-background-warning">
               <a class="navbar-item has-text-grey has-background-warning">
-                My Recipes
+                <router-link v-bind:to="{ path: '/my-recipes' }">My Recipes</router-link>
               </a>
               <a class="navbar-item has-text-grey has-background-warning">
-                All Recipes
+                <router-link v-bind:to="{ path: '/all-recipes' }">All Recipes</router-link>
               </a>
             </div>
+          </div>
+          <div class="navbar-item">
+            <router-link
+                class="button is-warning has-text-grey"
+                v-bind:to="{ path: '/my-meal-plans' }">My Meal Plans</router-link>
+          </div>
+          <div class="navbar-item">
+            <router-link
+                class="button is-warning has-text-grey"
+                v-bind:to="{ path: '/ingredients' }">Ingredients</router-link>
+          </div>
+          <div class="navbar-item">
+            <router-link
+                class="button is-warning has-text-grey"
+                v-bind:to="{ path: '/grocery-list' }">Grocery List</router-link>
           </div>
         </div>
 
@@ -90,5 +102,9 @@ export default {};
 .navbar-item{
   border-radius: 5px;
   height: 40px;
+}
+#recipe-dropdown{
+  margin-left: 12px;
+  margin-right: 12px;
 }
 </style>
