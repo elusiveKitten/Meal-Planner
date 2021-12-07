@@ -5,6 +5,11 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import AllRecipes from '../views/AllRecipes.vue'
+import MyRecipes from '../views/MyRecipes.vue'
+import MyMealPlans from '../views/MyMealPlans.vue'
+import GroceryList from '../views/GroceryList.vue'
+import Ingredients from '../views/Ingredients.vue'
 
 Vue.use(Router)
 
@@ -26,6 +31,46 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/all-recipes',
+      name: 'all-recipes',
+      component: AllRecipes,
+      meta:{
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/my-recipes',
+      name: 'my-recipes',
+      component: MyRecipes,
+      meta:{
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/my-meal-plans',
+      name: 'my-meal-plans',
+      component: MyMealPlans,
+      meta:{
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/grocery-list',
+      name: 'grocery-list',
+      component: GroceryList,
+      meta:{
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/ingredients',
+      name: 'ingredients',
+      component: Ingredients,
+      meta:{
         requiresAuth: true
       }
     },
