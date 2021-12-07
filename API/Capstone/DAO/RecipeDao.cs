@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capstone.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,20 +16,20 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public List<string> GetAllRecipes()
+        public List<Recipe> GetAllRecipes()
         {
-            List<string> recipes = new List<string>();
+            List<Recipe> recipes = new List<Recipe>();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT recipe_name FROM recipes", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT recipe_id, recipe_name FROM recipes", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while(reader.Read())
                     {
-                        string recipe = Convert.ToString(reader["recipe_name"]);   
+                        Recipe recipe = GetRecipeFromReader(reader);
                         if (recipe != null)
                         {
                             recipes.Add(recipe);
@@ -43,5 +44,21 @@ namespace Capstone.DAO
                 throw new Exception();
             }
         }
+        private Recipe GetRecipeFromReader(SqlDataReader reader)
+        {
+            try
+            {
+                Recipe recipe = new Recipe()
+                {
+                    RecipeId = Convert.ToInt32(reader["recipe_id"]),
+                    RecipeName = Convert.ToString(reader["recipe_name"]),
+                };
+                return recipe;
+            }
+            catch (SqlException)
+            {
+                throw new Exception();
+            }
+
+        }
     }
-}
