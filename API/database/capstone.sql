@@ -29,10 +29,10 @@ CREATE TABLE users (
 CREATE TABLE recipes (
 	recipe_id INT IDENTITY(1,1) NOT NULL,
 	recipe_name VARCHAR(200) NOT NULL,
+	calories VARCHAR(100) NULL,
 	instructions VARCHAR(2000) NOT NULL,
-
 	CONSTRAINT PK_recipes PRIMARY KEY (recipe_id),
-	--CONSTRAINT FK_recipes_users FOREIGN KEY (user_id) REFERENCES users(user_id),
+
 );
 --create recipes_users table
 CREATE TABLE recipes_users (
@@ -149,16 +149,16 @@ VALUES
 ('Salt');
 
 --add recipes
-INSERT INTO recipes (recipe_name, instructions)
-VALUES ('Easy Cheesy Ground Beef Enchiladas','Heat oven to 375°. Brown ground beef until thoroughly cooked; drain. Stir in 3/4 cup enchilada sauce and one cup of cheese.
+INSERT INTO recipes (recipe_name, calories, instructions)
+VALUES ('Easy Cheesy Ground Beef Enchiladas', '517' , 'Heat oven to 375°. Brown ground beef until thoroughly cooked; drain. Stir in 3/4 cup enchilada sauce and one cup of cheese.
 Spoon meat mixture onto tortillas roll-up and place seam-side down in lightly greased baking dish. Pour remaining enchilada sauce over top. Cover with remaining cheese. Bake for 15 to 20 minutes or until cheese melts. Serve with yellow rice and refried beans. Garnish with sour cream, salsa, and lettuce.');
-INSERT INTO recipes (recipe_name, instructions)
-VALUES ('Vegetable Lasagna', 'Preheat oven to 350°F. Spread a thin layer of sauce on the bottom of a 9"x13" casserole. Cover with a layer of noodles (3 or 4 noodles should be enough). Place ricotta in a bowl and add about 1/4 cup of water, stirring until blended. Spread 1/3 of this mixture over the pasta (you can use a cake spatula).
+INSERT INTO recipes (recipe_name, calories, instructions)
+VALUES ('Vegetable Lasagna', '330', 'Preheat oven to 350°F. Spread a thin layer of sauce on the bottom of a 9"x13" casserole. Cover with a layer of noodles (3 or 4 noodles should be enough). Place ricotta in a bowl and add about 1/4 cup of water, stirring until blended. Spread 1/3 of this mixture over the pasta (you can use a cake spatula).
 Spread 1/3 of the remaining pasta sauce over the cheese. Spread 1/3 of the vegetables over the sauce. Sprinkle 1/3 of the mozzarella over the veggies. Repeat twice starting with the noodles and ending with the mozzarella. Cover and bake until the noodles are tender (35 to 40 minutes). Remove cover and bake 5 minutes until cheese starts to become golden. Remove from oven and allow to stand for 5 minutes before cutting into squares.');
-INSERT INTO recipes (recipe_name, instructions)
-VALUES ('Grilled Tomatoes', 'First seed the tomatoes, next cut the tomatoes in half and season them with salt and pepper, brush the tomatoes with olive oil, grill tomatoes(cut side down) for 2-4 minutes')
-INSERT INTO recipes(recipe_name, instructions)
-VALUES ('Simple Mac n Cheese','Bring a large pot of lightly salted water to a boil. Boil elbow macaroni for 8 minutes, then drain. Melt butter in a saucepan over medium heat; stir in flour, salt, and pepper until smooth, about 5 minutes. Slowly pour milk into butter-flour mixture while continuously stirring until mixture is smooth and bubbling. Stir cheese into mixture until cheese is melting.');
+INSERT INTO recipes (recipe_name, calories, instructions)
+VALUES ('Grilled Tomatoes', '43', 'First seed the tomatoes, next cut the tomatoes in half and season them with salt and pepper, brush the tomatoes with olive oil, grill tomatoes(cut side down) for 2-4 minutes')
+INSERT INTO recipes(recipe_name, calories, instructions)
+VALUES ('Simple Mac n Cheese', '630', 'Bring a large pot of lightly salted water to a boil. Boil elbow macaroni for 8 minutes, then drain. Melt butter in a saucepan over medium heat; stir in flour, salt, and pepper until smooth, about 5 minutes. Slowly pour milk into butter-flour mixture while continuously stirring until mixture is smooth and bubbling. Stir cheese into mixture until cheese is melting.');
 
 --add recipe categories
 INSERT INTO recipe_category(recipe_id, category_id)
