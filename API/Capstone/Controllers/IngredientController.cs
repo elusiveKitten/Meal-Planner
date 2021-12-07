@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.Controllers
 {
-    [Route("[controller]")]
+    [Route("ingredient/")]
     [ApiController]
     public class IngredientController : ControllerBase
     {
@@ -20,7 +20,7 @@ namespace Capstone.Controllers
             IngredientDao = _ingredientDao;
         }
 
-        [HttpGet("/recipe/{recipeId}")]
+        [HttpGet("recipe/{recipeId}")]
         public IActionResult GetIngredientsByRecipe(int recipeId)
         {
             List<Ingredient> recipeIngredients = IngredientDao.GetIngredientsByRecipe(recipeId);

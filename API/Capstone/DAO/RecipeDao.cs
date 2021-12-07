@@ -25,12 +25,12 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT SELECT recipes.recipe_id, recipe_name, instructions, category_name, dish_type_name FROM recipes " +
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, instructions, category_name, dish_type_name  FROM recipes " +
                         "JOIN recipe_category on recipes.recipe_id = recipe_category.recipe_id " +
                         "JOIN recipe_dish_type on recipes.recipe_id = recipe_dish_type.recipe_id " +
                         "JOIN category on recipe_category.category_id = category.category_id " +
                         "JOIN dish_type on recipe_dish_type.dish_type_id = dish_type.dish_type_id " +
-                        "where recipes.recipe_id = @id)", conn);
+                        "where recipes.recipe_id = @id", conn);
                     cmd.Parameters.AddWithValue("@id", recipeId);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -99,7 +99,7 @@ namespace Capstone.DAO
                 MealRecipe recipe = new MealRecipe()
                 {
                     //recipes.recipe_id could be an issue in the future!! Otherwise it may be the fix!
-                    RecipeId = Convert.ToInt32(reader["recipes.recipe_id"]),
+                    RecipeId = Convert.ToInt32(reader["recipe_id"]),
                     RecipeName = Convert.ToString(reader["recipe_name"]),
                     Instructions = Convert.ToString(reader["instructions"]),
                     Category = Convert.ToString(reader["category_name"]),

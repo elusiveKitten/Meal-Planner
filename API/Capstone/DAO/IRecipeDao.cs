@@ -10,6 +10,6 @@ namespace Capstone.DAO
     {
         public List<Recipe> GetAllRecipes();
 
-        public MealRecipe GetRecipe(int id);
+        public MealRecipe GetRecipe(int recipeId);
     }
 }
