@@ -30,5 +30,15 @@ namespace Capstone.Controllers
             }
             return StatusCode(503);
         }
+        [HttpGet("/{recipeId}")]
+        public IActionResult GetRecipe(int recipeId)
+        {
+            MealRecipe mealRecipe = recipeDao.GetRecipe(recipeId);
+            if(mealRecipe != null)
+            {
+                return Ok(mealRecipe);
+            }
+            return StatusCode(404);
+        }
     }
 }
