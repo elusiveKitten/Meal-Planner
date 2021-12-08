@@ -113,6 +113,9 @@ INSERT INTO category (category_name) VALUES ('Easy');
 INSERT INTO category (category_name) VALUES ('Low Carb');
 INSERT INTO category (category_name) VALUES ('Gluten Free');
 INSERT INTO category (category_name) VALUES ('Keto');
+INSERT INTO category (category_name) VALUES ('Other');
+INSERT INTO category (category_name) VALUES ('Mexican');
+INSERT INTO category (category_name) VALUES ('Low-Ingredients');
 
 --Insert Users
 
@@ -125,7 +128,8 @@ VALUES
 ('Quinoa'),('Walnuts'),('Frozen Peas'),('Eggs'),('Egg Whites'),('Mushrooms'),('Baby Spinach'),('Provolone Cheese'),('Red Potatoes'),('Whole Grain Spiral Pasta'),('Parmesan Reggiano Cheese'),
 ('Green Onion'),('Eggplant'),('Fresh Basil'),('Pepper'),('Rigatoni'),('Creamed Spinach'),('Artichoke Hearts'),('Feta Cheese'),('Sweet Potatoes'),('Whole Wheat Tortillas'),('Black Beans'),
 ('Pepper Jack Cheese'),('Salsa'),('Corn Tortillas'),('Fresh Spinach'),('Blueberries'),('Sugar'),('Cornstarch'),('Refrigerated Pie Crust'),('Egg Yolk'),('Cream Cheese'),('Semisweet Chocolate Chips'),
-('Nutella'),('Graham Cracker Crumbs'),('Hazelnuts, Chopped'),('Hazelnuts, Whole'),('Mango Chunks'),('Passion Fruit Juice');
+('Nutella'),('Graham Cracker Crumbs'),('Hazelnuts, Chopped'),('Hazelnuts, Whole'),('Mango Chunks'),('Passion Fruit Juice'),('Raspberry Pie Filling'),('Yellow Cake Mix'),('Canola Oil'),('Vanilla Ice Cream'),
+('Confectioners Sugar'),('Pecans');
 
 --add recipes
 INSERT INTO recipes (recipe_name, calories, instructions)
@@ -174,12 +178,50 @@ INSERT INTO recipes(recipe_name, calories, instructions)
 VALUES ('Mini Blueberry Tarts', '383', 'Preheat oven to 425°. Crush half the blueberries. Sift together sugar and cornstarch. Add whole and crushed blueberries; toss until berries are well coated. Set aside. On a lightly floured surface, unroll crusts. Cut out six 4-1/2-in. circles; press circles onto bottoms and up sides of greased muffin cups. Evenly spoon in blueberry mixture. Cut out six 2-in. circles from remaining crust; place over filling. Brush with yolk. Bake until crust is golden and filling bubbles, 13-17 minutes. Cool in pans 10 minutes; run a knife around sides of muffin cups and remove tarts to a serving plate.');
 INSERT INTO recipes(recipe_name, calories, instructions)
 VALUES ('Quick Mango Sorbet', '91', 'Place all ingredients in a blender; cover and process until smooth. Serve immediately. If desired, for a firmer texture, cover and freeze at least 3 hours.');
+INSERT INTO recipes(recipe_name, calories, instructions)
+VALUES ('Cake & Berry Campfire Cobbler', '342', 'Prepare grill or campfire for low heat, using 16-20 charcoal briquettes or large wood chips. Line an ovenproof Dutch oven with heavy-duty aluminum foil; add pie filling. In a large bowl, combine the cake mix, water and oil. Spread over pie filling. Cover Dutch oven. When briquettes or wood chips are covered with white ash, place Dutch oven directly on top of 8-10 of them. Using long-handled tongs, place remaining briquettes on pan cover. Cook until filling is bubbly and a toothpick inserted in the topping comes out clean, 30-40 minutes. To check for doneness, use the tongs to carefully lift the cover. If desired, serve with ice cream.');
+INSERT INTO recipes(recipe_name, calories, instructions)
+VALUES ('Pecan Roll-Ups', '51', 'In a large bowl, beat butter, cream cheese and salt until smooth. Gradually beat in flour. Divide dough in half; shape each into a disk. Wrap and refrigerate 2 hours or until firm enough to roll. Preheat oven to 350°. Dust a work surface with about 2 tablespoons confectioners sugar. Roll 1 portion of dough into an 18x8-in. rectangle; cut dough crosswise into six 3-in.-wide sections. Cut each section crosswise into eight 1-in.-wide strips. Roll each strip around a pecan half; place 1 in. apart on ungreased baking sheets. Repeat with remaining dough and pecans, dusting work surface with an additional 2 tablespoons confectioners sugar. Bake 12-15 minutes or until bottoms are lightly browned. Remove to wire racks to cool completely. Place remaining confectioners sugar in a shallow bowl. Roll cookies in sugar, coating well. Freeze option: Bake, cool and roll cookies in confectioners sugar as directed. Freeze in freezer containers, separating layers with waxed paper, up to 3 months. Thaw before serving; dust with additional confectioners sugar.');
+INSERT INTO recipes(recipe_name, calories, instructions)
+VALUES ('', '', '');
+INSERT INTO recipes(recipe_name, calories, instructions)
+VALUES ('', '', '');
+INSERT INTO recipes(recipe_name, calories, instructions)
+VALUES ('', '', '');
+INSERT INTO recipes(recipe_name, calories, instructions)
+VALUES ('', '', '');
+
+
 
 
 --add recipe categories
 INSERT INTO recipe_category(recipe_id, category_id)
 VALUES
-	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Simple Mac n Cheese'),(SELECT category_id FROM category WHERE category_name = 'Easy'));
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Easy Cheesy Ground Beef Enchiladas'),(SELECT category_id FROM category WHERE category_name = 'Mexican')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Lasagna'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Grilled Tomatoes'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Simple Mac n Cheese'),(SELECT category_id FROM category WHERE category_name = 'Easy')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Garlic Parmesan Roasted Cauliflower'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Simple Roasted Butternut Squash'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Buttery Garlic Green Beans'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pesto Chicken'),(SELECT category_id FROM category WHERE category_name = 'Low Carb')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Bacon Chicken'),(SELECT category_id FROM category WHERE category_name = 'Keto')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Balsamic Goat Cheese Stuffed Chicken Breasts'),(SELECT category_id FROM category WHERE category_name = 'Low Carb')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Quinoa with Peas and Onion'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Spinach Mushroom Scrambled Eggs'),(SELECT category_id FROM category WHERE category_name = 'Easy')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pesto Pasta and Potatoes'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Spinach Parm Casserole'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Mediterranean Omelet'),(SELECT category_id FROM category WHERE category_name = 'Easy')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Grilled Eggplant Parmesan Stacks'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Spinach Artichoke Rigatoni'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Spanakopita Mashed Potatoes'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Sweet Potato & Bean Quesadillas'),(SELECT category_id FROM category WHERE category_name = 'Mexican')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Southwest Tortilla Scramble'),(SELECT category_id FROM category WHERE category_name = 'Mexican')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'No-Bake Chocolate Hazelnut Thumbprints'),(SELECT category_id FROM category WHERE category_name = 'Easy')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Mini Blueberry Tarts'),(SELECT category_id FROM category WHERE category_name = 'Easy')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Quick Mango Sorbet'),(SELECT category_id FROM category WHERE category_name = 'Low-Ingredients')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Cake & Berry Campfire Cobbler'),(SELECT category_id FROM category WHERE category_name = 'Low-Ingredients')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'),(SELECT category_id FROM category WHERE category_name = 'Easy'));
 
 --add recipe ingredients
 INSERT INTO dish_type (dish_type_name) 
@@ -221,7 +263,12 @@ VALUES
 	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Main Dish'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Spinach Artichoke Rigatoni')),
 	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Side Dish'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Spanakopita Mashed Potatoes')),
 	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Main Dish'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Sweet Potato & Bean Quesadillas')),
-	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Main Dish'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Southwest Tortilla Scramble'));
+	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Main Dish'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Southwest Tortilla Scramble')),
+	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Dessert'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'No-Bake Chocolate Hazelnut Thumbprints')),
+	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Dessert'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Mini Blueberry Tarts')),
+	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Dessert'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Quick Mango Sorbet')),
+	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Dessert'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'));
+
 
 --Add recipe ingredients
 INSERT INTO recipe_ingredients (recipe_id, ingredient_id,amount,unit)
@@ -401,6 +448,21 @@ VALUES
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Quick Mango Sorbet'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Mango Chunks'),'1','package, frozen'),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Quick Mango Sorbet'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Passion Fruit Juice'),'1/2','cup'),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Quick Mango Sorbet'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Sugar'),'2','tablespoons');
+INSERT INTO recipe_ingredients(recipe_id, ingredient_id,amount,unit)
+VALUES
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Cake & Berry Campfire Cobbler'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Raspberry Pie Filling'),'2','cans'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Cake & Berry Campfire Cobbler'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Yellow Cake Mix'),'1','package'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Cake & Berry Campfire Cobbler'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Water'),'1 1/4','cups'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Cake & Berry Campfire Cobbler'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Canola Oil'),'1/2','cup'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Cake & Berry Campfire Cobbler'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Vanilla Ice Cream'),'1/2','cup');
+INSERT INTO recipe_ingredients(recipe_id, ingredient_id,amount,unit)
+VALUES
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Butter'),'1','cup'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Cream Cheese'),'8','ounces'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Flour'),'2','cups'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Confectioners Sugar'),'1 1/4','cups'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Pecans'),'2','cups');
+
 
 
 
