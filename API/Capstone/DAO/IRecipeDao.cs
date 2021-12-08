@@ -15,5 +15,7 @@ namespace Capstone.DAO
         public List<MealRecipe> GetRecipesByUser(int userId);
 
         public List<MealRecipe> SearchByIngredient(string ingredient);
+
+        public List<MealRecipe> SearchByCategory(string category);
     }
 }

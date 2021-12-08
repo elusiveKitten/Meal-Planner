@@ -60,5 +60,15 @@ namespace Capstone.Controllers
             }
             return StatusCode(404);
         }
+        [HttpGet("search/category/{category}")]
+        public IActionResult SearchByCategory(string category)
+        {
+            List<MealRecipe> categoryRecipes = recipeDao.SearchByCategory(category);
+            if(categoryRecipes!=null)
+            {
+                return Ok(categoryRecipes);
+            }
+            return StatusCode(404);
+        }
     }
 }
