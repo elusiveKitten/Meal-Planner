@@ -124,7 +124,8 @@ VALUES
 ('Garlic'),('Parmesan Cheese'),('Lemon Pepper'),('Chicken Breast'),('Basil Pesto'),('Prosciutto'),('Honey Barbeque Sauce'),('Bacon'),('Shallot'),('Balsamic Vinegar'),('Goat Cheese'),('Water'),
 ('Quinoa'),('Walnuts'),('Frozen Peas'),('Eggs'),('Egg Whites'),('Mushrooms'),('Baby Spinach'),('Provolone Cheese'),('Red Potatoes'),('Whole Grain Spiral Pasta'),('Parmesan Reggiano Cheese'),
 ('Green Onion'),('Eggplant'),('Fresh Basil'),('Pepper'),('Rigatoni'),('Creamed Spinach'),('Artichoke Hearts'),('Feta Cheese'),('Sweet Potatoes'),('Whole Wheat Tortillas'),('Black Beans'),
-('Pepper Jack Cheese'),('Salsa'),('Corn Tortillas'),('Fresh Spinach');
+('Pepper Jack Cheese'),('Salsa'),('Corn Tortillas'),('Fresh Spinach'),('Blueberries'),('Sugar'),('Cornstarch'),('Refrigerated Pie Crust'),('Egg Yolk'),('Cream Cheese'),('Semisweet Chocolate Chips'),
+('Nutella'),('Graham Cracker Crumbs'),('Hazelnuts, Chopped'),('Hazelnuts, Whole'),('Mango Chunks'),('Passion Fruit Juice');
 
 --add recipes
 INSERT INTO recipes (recipe_name, calories, instructions)
@@ -168,11 +169,11 @@ VALUES ('Sweet Potato & Bean Quesadillas', '306', 'Scrub sweet potatoes; pierce 
 INSERT INTO recipes(recipe_name, calories, instructions)
 VALUES ('Southwest Tortilla Scramble', '195', 'In a large bowl, whisk egg whites, eggs and pepper. Stir in tortillas, spinach and cheese. Heat a large skillet coated with cooking spray over medium heat. Pour in egg mixture; cook and stir until eggs are thickened and no liquid egg remains. Top with salsa.');
 INSERT INTO recipes(recipe_name, calories, instructions)
-VALUES ('', '', '');
+VALUES ('No-Bake Chocolate Hazelnut Thumbprints', '111', 'Beat cream cheese, melted chocolate chips and Nutella until blended. Stir in cracker crumbs. Refrigerate until firm enough to roll, about 30 minutes. Shape mixture into 1-in. balls; roll in chopped hazelnuts. Make an indentation in the center of each with the end of a wooden spoon handle. Fill with a hazelnut. Store between layers of waxed paper in an airtight container in the refrigerator.');
 INSERT INTO recipes(recipe_name, calories, instructions)
-VALUES ('', '', '');
+VALUES ('Mini Blueberry Tarts', '383', 'Preheat oven to 425°. Crush half the blueberries. Sift together sugar and cornstarch. Add whole and crushed blueberries; toss until berries are well coated. Set aside. On a lightly floured surface, unroll crusts. Cut out six 4-1/2-in. circles; press circles onto bottoms and up sides of greased muffin cups. Evenly spoon in blueberry mixture. Cut out six 2-in. circles from remaining crust; place over filling. Brush with yolk. Bake until crust is golden and filling bubbles, 13-17 minutes. Cool in pans 10 minutes; run a knife around sides of muffin cups and remove tarts to a serving plate.');
 INSERT INTO recipes(recipe_name, calories, instructions)
-VALUES ('', '', '');
+VALUES ('Quick Mango Sorbet', '91', 'Place all ingredients in a blender; cover and process until smooth. Serve immediately. If desired, for a firmer texture, cover and freeze at least 3 hours.');
 
 
 --add recipe categories
@@ -380,6 +381,29 @@ VALUES
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Southwest Tortilla Scramble'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Shredded Cheddar Cheese'),'2','tablespoons'),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Southwest Tortilla Scramble'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Salsa'),'1/4','cup'),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Southwest Tortilla Scramble'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Pepper'),'1/4','teaspoon');
+INSERT INTO recipe_ingredients(recipe_id, ingredient_id,amount,unit)
+VALUES
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'No-Bake Chocolate Hazelnut Thumbprints'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Cream Cheese'),'8','ounces'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'No-Bake Chocolate Hazelnut Thumbprints'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Semisweet Chocolate Chips'),'1','cup'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'No-Bake Chocolate Hazelnut Thumbprints'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Nutella'),'1/2','cup'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'No-Bake Chocolate Hazelnut Thumbprints'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Graham Cracker Crumbs'),'2 1/4','cups'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'No-Bake Chocolate Hazelnut Thumbprints'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Hazelnuts, Chopped'),'1','cup'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'No-Bake Chocolate Hazelnut Thumbprints'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Hazelnuts, Whole'),'1','cup');
+INSERT INTO recipe_ingredients(recipe_id, ingredient_id,amount,unit)
+VALUES
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Mini Blueberry Tarts'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Blueberries'),'2','cups'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Mini Blueberry Tarts'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Sugar'),'1/3','cup'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Mini Blueberry Tarts'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Cornstarch'),'4','teaspoons'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Mini Blueberry Tarts'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Refrigerated Pie Crust'),'2','sheets'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Mini Blueberry Tarts'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Egg Yolk'),'1','large, lightly beaten');
+INSERT INTO recipe_ingredients(recipe_id, ingredient_id,amount,unit)
+VALUES
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Quick Mango Sorbet'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Mango Chunks'),'1','package, frozen'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Quick Mango Sorbet'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Passion Fruit Juice'),'1/2','cup'),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Quick Mango Sorbet'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Sugar'),'2','tablespoons');
+
+
+
 
 
 
