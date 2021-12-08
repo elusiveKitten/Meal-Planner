@@ -56,7 +56,7 @@
               <a
                 class="has-text-grey-lighter navbar-item has-text-grey has-background-primary-dark"
               >
-                <router-link v-bind:to="{ path: '/all-recipes' }"
+                <router-link v-bind:to="{ path: '/recipe/all' }"
                   >All Recipes</router-link
                 >
               </a>
