@@ -8,8 +8,12 @@ namespace Capstone.DAO
 {
     public interface IRecipeDao
     {
-        public List<Recipe> GetAllRecipes();
+        public List<MealRecipe> GetAllRecipes();
 
         public MealRecipe GetRecipe(int recipeId);
+
+        public List<MealRecipe> GetRecipesByUser(int userId);
+
+        public List<MealRecipe> SearchByIngredient(string ingredient);
     }
 }
