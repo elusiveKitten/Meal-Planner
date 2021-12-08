@@ -10,6 +10,7 @@ import MyRecipes from '../views/MyRecipes.vue'
 import MyMealPlans from '../views/MyMealPlans.vue'
 import GroceryList from '../views/GroceryList.vue'
 import Ingredients from '../views/Ingredients.vue'
+import RecipeDetailsView from '../views/RecipeDetailsView.vue'
 
 Vue.use(Router)
 
@@ -98,6 +99,11 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: '/recipe/:id',
+      name:'recipe-detail',
+      component: RecipeDetailsView
+    }
   ]
 })
 
