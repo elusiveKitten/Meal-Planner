@@ -5,5 +5,8 @@ const http = axios.create({
 export default{
     getRecipes(){
         return http.get('/recipe/all')
+    },
+    getRecipeById(recipeId){
+        return http.get(`/recipe/${recipeId}`)
     }
 }
