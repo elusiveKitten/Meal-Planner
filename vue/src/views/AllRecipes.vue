@@ -1,16 +1,18 @@
 <template>
     <div id="all-recipes-container">
         <nav-bar></nav-bar>
-        <h1>All Recipes</h1>
+        <recipes-list />
         
     </div>
 </template>
 <script>
 import NavBar from '../components/NavBar.vue';
+import RecipesList from '../components/RecipesList.vue';
 export default {
   name: "all-recipes",
   components: {
-    NavBar
+    NavBar,
+    RecipesList
   }
 };
 </script>
