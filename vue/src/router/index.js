@@ -35,7 +35,7 @@ const router = new Router({
       }
     },
     {
-      path: '/all-recipes',
+      path: '/recipe/all',
       name: 'all-recipes',
       component: AllRecipes,
       meta:{
