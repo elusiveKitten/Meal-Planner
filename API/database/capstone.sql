@@ -32,6 +32,7 @@ CREATE TABLE recipes (
 	calories VARCHAR(100) NULL,
 	instructions VARCHAR(2000) NOT NULL,
 	CONSTRAINT PK_recipes PRIMARY KEY (recipe_id),
+	UNIQUE(recipe_name)
 
 );
 --create recipes_users table
@@ -113,6 +114,11 @@ INSERT INTO category (category_name) VALUES ('Easy');
 INSERT INTO category (category_name) VALUES ('Low Carb');
 INSERT INTO category (category_name) VALUES ('Gluten Free');
 INSERT INTO category (category_name) VALUES ('Keto');
+INSERT INTO category (category_name) VALUES ('Beef');
+INSERT INTO category (category_name) VALUES ('Seafood');
+INSERT INTO category (category_name) VALUES ('Pork');
+INSERT INTO category (category_name) VALUES ('Poultry');
+INSERT INTO category (category_name) VALUES ('Sweet');
 
 --Insert Users
 
@@ -179,7 +185,14 @@ VALUES ('Quick Mango Sorbet', '91', 'Place all ingredients in a blender; cover a
 --add recipe categories
 INSERT INTO recipe_category(recipe_id, category_id)
 VALUES
-	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Simple Mac n Cheese'),(SELECT category_id FROM category WHERE category_name = 'Easy'));
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Simple Mac n Cheese'),(SELECT category_id FROM category WHERE category_name = 'Easy')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Grilled Tomatoes'), (SELECT category_id FROM category WHERE category_name = 'Easy')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Easy Cheesy Ground Beef Enchiladas'), (SELECT category_id FROM category WHERE category_name = 'Beef')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Quick Mango Sorbet'), (SELECT category_id FROM category WHERE category_name = 'Sweet')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Spinach Mushroom Scrambled Eggs'), (SELECT category_id FROM category WHERE category_name = 'Low Carb')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pesto Chicken'), (SELECT category_id FROM category WHERE category_name = 'Poultry')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Balsamic Goat Cheese Stuffed Chicken Breasts'), (SELECT category_id FROM category WHERE category_name = 'Poultry')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Buttery Garlic Green Beans'), (SELECT category_id FROM category WHERE category_name = 'Vegetarian'));
 
 --add recipe ingredients
 INSERT INTO dish_type (dish_type_name) 
@@ -199,6 +212,7 @@ VALUES
 	((SELECT meal_plan_id FROM meal_plan WHERE meal_plan_name = 'Cheesetastic'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Simple Mac n Cheese')),
 	((SELECT meal_plan_id FROM meal_plan WHERE meal_plan_name = 'Cheesetastic'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Easy Cheesy Ground Beef Enchiladas')),
 	((SELECT meal_plan_id FROM meal_plan WHERE meal_plan_name = 'Cheesetastic'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Grilled Tomatoes'));
+
 --Add dish type to recipes
 INSERT INTO recipe_dish_type (dish_type_id, recipe_id)
 VALUES 

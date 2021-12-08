@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace Capstone.Models
 {
-    public class Ingredient
+    public class RecipeIngredient
     {
         public int IngredientId { get; set; }
         public string IngredientName { get; set; }
+        public string Amount { get; set; }
+        public string Unit { get; set; }
     }
 }
