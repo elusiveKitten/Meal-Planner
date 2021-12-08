@@ -114,6 +114,39 @@ namespace Capstone.DAO
                 throw new Exception();
             }
         }
+        public List<MealRecipe> SearchByCategory(string category)
+        {
+            List<MealRecipe> recipes = new List<MealRecipe>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, category_name, dish_type_name FROM recipes " +
+                        "JOIN recipe_category on recipes.recipe_id = recipe_category.recipe_id " +
+                        "JOIN recipe_dish_type on recipes.recipe_id = recipe_dish_type.recipe_id " +
+                        "JOIN category on recipe_category.category_id = category.category_id " +
+                        "JOIN dish_type on recipe_dish_type.dish_type_id = dish_type.dish_type_id " +
+                        "WHERE category.category_name LIKE '%" + category + "%'", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        MealRecipe recipe = GetMealRecipeFromReader(reader);
+                        if (recipe != null)
+                        {
+                            recipes.Add(recipe);
+                        }
+                    }
+                    reader.Close();
+                }
+                return recipes;
+            }
+            catch (SqlException)
+            {
+                throw new Exception();
+            }
+        }
         public List<MealRecipe> SearchByIngredient(string ingredient)
         {
             List<MealRecipe> recipes = new List<MealRecipe>();
