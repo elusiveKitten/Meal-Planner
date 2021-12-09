@@ -37,7 +37,7 @@ CREATE TABLE recipes (
 );
 --create recipes_users table
 CREATE TABLE recipes_users (
-	recipe_id INT IDENTITY (1,1) NOT NULL,
+	recipe_id INT NOT NULL,
 	user_id INT NOT NULL,
 	CONSTRAINT PK_recipes_users PRIMARY KEY (recipe_id, user_id),
 	CONSTRAINT FK_recipes_users_recipes FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
@@ -466,7 +466,6 @@ VALUES
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Flour'),'2','cups'),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Confectioners Sugar'),'1 1/4','cups'),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Pecans'),'2','cups');
-
 
 
 
