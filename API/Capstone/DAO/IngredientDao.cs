@@ -46,14 +46,14 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO ingredients(ingredient_name) VALUES(" + ingredient.IngredientName + "); SELECT @@IDENTITY", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO ingredients(ingredient_name) VALUES('" + ingredient.IngredientName + "'); SELECT @@IDENTITY", conn);
                     newIngredientId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
                 return GetIngredientById(newIngredientId);
             }
             catch (SqlException)
             {
-                throw new Exception();
+                throw new Exception("Ingredient may already exist");
             }
         }
         public List<Ingredient> GetAllIngredients()
