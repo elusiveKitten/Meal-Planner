@@ -3,7 +3,7 @@
   <div class="home">
     <nav-bar />
     <body>
-      <h1>Welcome to Meal Planner!</h1>
+      <h1 id="welcome">Welcome to Meal Planner!</h1>
     </body>
   </div>
 </template>
@@ -18,6 +18,7 @@ export default {
 };
 </script>
 <style>
+@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
 .home{
   height: 100vh;
   background-image: url('https://cdn.rcimg.net/meitanteikudo/a5d5b507/5f28b9be7d71464801b30d31f9ba12ac.jpeg');
@@ -33,5 +34,18 @@ export default {
 }
 p{
   width: 200px;
+}
+#welcome{
+  font-size: 10vw;
+  margin: 0;
+  padding: 0 0 20px;
+  text-align:center;
+  font-family: 'Sacramento', cursive;
+  font-weight: bold;
+  text-shadow: 10px 5px 10px #010e02;
+  color:#edeeeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
