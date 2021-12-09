@@ -107,7 +107,7 @@ CREATE TABLE recipe_dish_type(
 --populate default data
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
-
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Alec','6cWcPlWhm/SgDxa9LCqPZOscnRU=', 'Y7JKLDfzcLg=','user');
 --GO
 INSERT INTO category (category_name) VALUES ('Vegetarian');
 INSERT INTO category (category_name) VALUES ('Easy');
@@ -468,8 +468,11 @@ VALUES
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'), (SELECT ingredient_id FROM ingredients WHERE ingredient_name = 'Pecans'),'2','cups');
 
 
-
-
+INSERT INTO recipes_users(recipe_id, user_id) 
+VALUES
+	(9, 3),
+	(8, 3),
+	(10,3)
 
 
 
