@@ -6,7 +6,7 @@
       <p>{{ coordinates.lat}} Latitude, {{ coordinates.lng}} Longitude</p>
       <GmapMap
       :center="coordinates"
-      :zoom="7"
+      :zoom="9"
       style="width:640px; height:360px; margin: 32px; auto;"
       ref="mapRef"
       @dragend="handleDrag"

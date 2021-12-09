@@ -1,6 +1,5 @@
 <template>
     <div class="search-holder">
-        <div class="search-holder-banner">
             <div class="header-container">
                 <h1 class="search-header">
                     Grocery Stores Nearby
@@ -14,11 +13,9 @@
                             type="text"
                             />
                         </div>
-
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </template>
 
