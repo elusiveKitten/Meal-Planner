@@ -13,22 +13,48 @@ namespace Capstone.Controllers
     [ApiController]
     public class IngredientController : ControllerBase
     {
-        private readonly IIngredientDao IngredientDao;
+        private readonly IIngredientDao ingredientDao;
 
         public IngredientController(IIngredientDao _ingredientDao)
         {
-            IngredientDao = _ingredientDao;
+            ingredientDao = _ingredientDao;
         }
 
         [HttpGet("recipe/{recipeId}")]
         public IActionResult GetIngredientsByRecipe(int recipeId)
         {
-            List<Ingredient> recipeIngredients = IngredientDao.GetIngredientsByRecipe(recipeId);
+            List<RecipeIngredient> recipeIngredients = ingredientDao.GetIngredientsByRecipe(recipeId);
             if(recipeIngredients!=null)
             {
                 return Ok(recipeIngredients);
             }
             return StatusCode(404);
+        }
+        [HttpGet("all")]
+        public IActionResult GetAllIngredients()
+        {
+            List<Ingredient> ingredients = ingredientDao.GetAllIngredients();
+            if(ingredients != null)
+            {
+                return Ok(ingredients);
+            }
+            return StatusCode(503);
+        }
+        [HttpGet("/{ingredientId}")]
+        public IActionResult GetIngredientById(int ingredientId)
+        {
+            Ingredient ingredient = ingredientDao.GetIngredientById(ingredientId);
+            if(ingredient!=null)
+            {
+                return Ok(ingredient);
+            }
+            return StatusCode(503);
+        }
+        [HttpPost("new")]
+        public ActionResult<Ingredient> CreateIngredient(Ingredient newIngredient)
+        {
+            Ingredient added = ingredientDao.CreateIngredient(newIngredient);
+            return Created($"/ingredient/new/{added.IngredientId}", added);
         }
     }
 }
