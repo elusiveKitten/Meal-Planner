@@ -70,5 +70,11 @@ namespace Capstone.Controllers
             }
             return StatusCode(404);
         }
+        [HttpPost("add")]
+        public ActionResult<UserRecipe> AddUserRecipe(UserRecipe userRecipe)
+        {
+            UserRecipe addedRecipe = recipeDao.AddUserRecipe(userRecipe);
+            return Created($"/recipe/user/{addedRecipe.UserId}", addedRecipe);
+        }
     }
 }
