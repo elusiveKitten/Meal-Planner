@@ -81,7 +81,35 @@ namespace Capstone.DAO
                 throw new Exception();
             }
         }
+        public UserRecipe ConfirmUserRecipe(int userId, int recipeId)
+        {
+            UserRecipe userRecipe = new UserRecipe();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
 
+                    SqlCommand cmd = new SqlCommand("SELECT recipe_id, user_id FROM recipes_users WHERE user_id = " + userId + " AND recipe_id = " + recipeId + ";", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        userRecipe = new UserRecipe()
+                        {
+                            //recipes.recipe_id could be an issue in the future!! Otherwise it may be the fix!
+                            RecipeId = Convert.ToInt32(reader["recipe_id"]),
+                            UserId = Convert.ToInt32(reader["user_id"])
+                        };
+                    }
+                    reader.Close();
+                }
+                return userRecipe;
+            }
+            catch (SqlException)
+            {
+                throw new Exception();
+            }
+        }
         public List<MealRecipe> GetAllRecipes()
         {
             List<MealRecipe> recipes = new List<MealRecipe>();
@@ -141,6 +169,23 @@ namespace Capstone.DAO
                     reader.Close();
                 }
                 return recipes;
+            }
+            catch (SqlException)
+            {
+                throw new Exception();
+            }
+        }
+        public UserRecipe AddUserRecipe(UserRecipe newRecipe)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO recipes_users(recipe_id, user_id) VALUES(" + newRecipe.RecipeId + ", " + newRecipe.UserId + ");", conn);
+                    cmd.ExecuteNonQuery();
+                }
+                return ConfirmUserRecipe(newRecipe.UserId, newRecipe.RecipeId);
             }
             catch (SqlException)
             {
