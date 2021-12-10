@@ -1,21 +1,27 @@
 <!--added for googlemap function-->
 <template>
   <div>
-  <div class="search-pin">
+  <div class="search-pin" style="font-size: 12px;">
       <h3>Search and Add a Pin</h3>
       <GmapAutocomplete
       @place_changed='setPlace'
       />
-      <div style="display: flex; align-items: center; justify-content: space-between"></div>
-      <h1> Your coordinates:</h1>
-      <p>{{ coordinates.lat}} Latitude, {{ coordinates.lng}} Longitude</p>
+      <!-- <div style="display: flex; align-items: center; justify-content: space-between"></div> -->
+      <!-- <h1> Your coordinates:</h1>
+      <p>{{ coordinates.lat}} Latitude, {{ coordinates.lng}} Longitude</p> -->
       <GmapMap
       :center="coordinates"
-      :zoom="9"
+      :zoom="7"
       style="width:25vw; height:35vh; margin; auto;"
       ref="mapRef"
-      @dragend="handleDrag"
-      ></GmapMap>
+      >
+      <GmapMarker
+      :key="index"
+      v-for="(m,index) in markers"
+      :position="m.position"
+      @click="center=m.position"
+      />
+      </GmapMap>
       </div>
   </div>
 </template>
@@ -49,6 +55,14 @@ export default {
         this.currentPlace = place;
       }
     },
+    // geolocate: function() {
+    //   navigator.geolocation.getCurrentPosition(position => {
+    //     this.center = {
+    //       lat: position.coords.latitude,
+    //       lng: position.coords.longitude,
+    //     }
+    //   })
+    // },
     computed: {
       mapCoordinates() {
         if(!this.map) {
@@ -69,4 +83,10 @@ export default {
 
 <style>
 
+.search-pin {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  border: solid 2px #56aa54;
+}
 </style>
