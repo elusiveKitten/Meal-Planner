@@ -20,7 +20,7 @@ namespace Capstone.Controllers
             recipeDao = _recipeDao;
         }
 
-        [HttpGet("all")]
+        [HttpGet("all")]//get recipe details
         public IActionResult GetAllRecipes()
         {
             List<MealRecipe> allRecipes = recipeDao.GetAllRecipes();
@@ -70,13 +70,13 @@ namespace Capstone.Controllers
             }
             return StatusCode(404);
         }
-        [HttpPost("add")]//add a recipe 
+        [HttpPost("add")]//add a recipe to my recipe
         public ActionResult<UserRecipe> AddUserRecipe(UserRecipe userRecipe)
         {
             UserRecipe addedRecipe = recipeDao.AddUserRecipe(userRecipe);
             return Created($"/recipe/add/{addedRecipe.UserId}", addedRecipe);
         }
-        [HttpPost("create")]
+        [HttpPost("create")]//create new recipe
         public ActionResult<UserRecipe> CreateNewRecipe(Recipe recipe)
         {
             UserRecipe createdRecipe = recipeDao.CreateNewRecipe(recipe);

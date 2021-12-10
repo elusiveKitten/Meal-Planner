@@ -24,4 +24,14 @@ namespace Capstone.Models
         public string Category { get; set; }
         public string DishType { get; set; }
     }
+    public class UserRecipe
+    {
+        public int UserId { get; set; }
+        public int RecipeId { get; set; }
+    }
+    public class SimplifiedRecipe
+    {
+        public int RecipeId { get; set; }
+        public string RecipeName { get; set; }
+    }
 }

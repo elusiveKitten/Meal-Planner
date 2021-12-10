@@ -156,7 +156,6 @@ namespace Capstone.DAO
             {
                 Ingredient ingredient = new Ingredient()
                 {
-                    //ingredients.ingredient_id may be an issue in the future!!
                     IngredientId = Convert.ToInt32(reader["ingredient_id"]),
                     IngredientName = Convert.ToString(reader["ingredient_name"]),
                 };
