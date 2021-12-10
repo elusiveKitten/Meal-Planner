@@ -148,8 +148,9 @@ h1{/*The Register For A Meal Planner Acct msg*/
 }
 h2{/* the Create Acct msg*/
   margin-top: -30px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   padding:0px;
+  width: 260px;
   text-align:center;
   font-size:27px;
   display: flex;
@@ -158,15 +159,17 @@ h2{/* the Create Acct msg*/
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 #register {/*the transparent box*/
-  width: 320px;
-  height: 420px;
+  width: 360px;
+  height: 60vh;
   background: rgba(0,0,0,0.5);
   color: #ffffff;
-  padding: 290px 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 290px;
   border-radius: 5px;
   grid-area: register-box;
   margin-top: 100px;
-  margin-left: calc(50% - 160px);
+  margin-left: calc(50% - 180px);
 }
 #register .icon-box{/*the round "box" that the + is in*/
 background:  #56aa54;
@@ -188,7 +191,7 @@ left: 24px;
 }
 .form-register {/*the form where all words are*/
   margin-top: 620px;
-
+  align-content: center;
 }
 #register p{/*Username/Password/Confirm Pword visible words*/
   margin: 0px;
@@ -231,17 +234,28 @@ left: 24px;
 #register a:hover{/*already have an acct link changes color on hover*/
   color: #1db429;
 }
-
-
+@media only screen and (max-width: 1620px){
+  #register {/*the transparent box*/
+  width: 360px;
+  height: 550px;
+  background: rgba(0,0,0,0.5);
+  color: #ffffff;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 290px;
+  border-radius: 5px;
+  grid-area: register-box;
+  margin-top: 50px;
+  margin-left: calc(50% - 180px);
+}
+.form-register {/*the form where all words are*/
+  margin-top: 600px;
+  align-content: center;
+}
+}
 .form-control {
 }
 .divInput {
   padding-bottom: 15px;
 }
-/* @media screen and (min-width: 768px){
-    #login{
-      margin-left: 45%;
-      margin-right: 45%;
-    }
-} */
 </style>

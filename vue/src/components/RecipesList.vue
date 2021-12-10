@@ -1,7 +1,7 @@
 <template>
   <div id="recipe-display">
-    <div class="recipes">
       <h1 id="title">{{ title }}</h1>
+    <div class="recipes">
       <select id="categoryFilter" v-model="filter.category">
         <option value="">All Categories</option>
         <option value="Keto">Keto</option>
@@ -77,15 +77,14 @@ export default {
 };
 </script>
 <style>
-.recipe {
-  border: 1px black solid;
+.recipe {/*the dark grey transparent boxes each recipe is in*/
   border-radius: 6px;
   padding: 1rem;
   margin: 10px;
   display: flex;
   justify-content: space-between;
   width: 35%;
-  background-color: rgba(40, 65, 94, 0.3);
+  background-color: rgba(0,0,0,0.5);
   color: white;
   font-weight: bold;
 }
@@ -95,27 +94,27 @@ export default {
   align-items: center;
   flex-direction: column;
   overflow: hidden;
+  margin-top: -50px;
 }
 #image {
   height: 150px;
+  border-radius: 5px;
 }
 #title {
-  font-size: 65px;
-  width: 40%;
-  margin: 0;
-  padding: 0 0 20px;
-  text-align: center;
-  font-family: "Sacramento", cursive;
-  font-weight: bold;
-  text-shadow: 10px 5px 10px #aabeab;
-  color: rgb(128, 172, 128);
+font-family: 'Sacramento', cursive;
+font-size: 55px;
+color:#ee3f0a;
+text-shadow: 2px 2px 1px #1a0b06;
+font-weight: bold;
+margin-top: 20px;
+margin-left: 20px;
 }
 #recipeNameFilter {
   width: 35%;
   background-color: rgba(255, 255, 255, 0.4);
 }
 ::placeholder {
-  color: rgb(169, 169, 170);
+  color: rgba(0,0,0,0.5);
   font-size: 1em;
 }
 input {
@@ -125,18 +124,20 @@ input {
   border: 1px solid rgb(129, 129, 129);
 }
 #link-to-detail {
-  font-weight: lighter;
+  font-weight: bold;
+  color: #56aa54;
+  font-size: 18px;
 }
 #recipe-name {
-  font-weight: bolder;
-  font-size: 1.5em;
+  font-weight: bold;
+  font-size: 24px;
+  text-shadow: 1px 1px 5px #ee3f0a;
 }
 h3 {
-  background-color: hsl(171, 100%, 29%);
+  background-color: #56aa54;
   width: fit-content;
   padding: 2px;
-  border: 1px solid white;
-  border-radius: 6px;
+  border-radius: 5px;
   color: white;
 }
 #info {

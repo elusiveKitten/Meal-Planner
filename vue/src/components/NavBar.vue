@@ -13,8 +13,8 @@
       aria-label="main navigation"
     >
       <div class="navbar-brand">
-        <a class="navbar-item" src="@/views/plate.png">
-          <img src="@/views/plate.png" />
+        <a class="navbar-item">
+          <i class="fas fa-utensils"></i>
         </a>
 
         <a
@@ -34,27 +34,27 @@
         <div class="navbar-start">
           <div class="navbar-item">
             <router-link
-              class="button is-warning has-background-primary-dark has-text-grey-lighter"
+              class="button"
               v-bind:to="{ name: 'home' }"
               ><i class="fas fa-home"></i>Home</router-link
             >&nbsp;&nbsp;
           </div>
           <div
             id="recipe-dropdown"
-            class="has-text-grey-lighter navbar-item has-dropdown is-hoverable has-background-primary-dark"
+            class="button navbar-item has-dropdown is-hoverable"
           >
             <a class="navbar-link"><i class="fas fa-list"></i> Recipes </a>
 
-            <div class="navbar-dropdown has-background-primary-dark">
+            <div class="navbar-dropdown">
               <a
-                class="has-text-grey-lighter navbar-item has-text-grey has-background-primary-dark"
+                class="navbar-item"
               >
-                <router-link v-bind:to="{ path: '/my-recipes' }"
+                <router-link v-bind:to="{ path: '/recipe/user/userId' }"
                   >My Recipes</router-link
                 >
               </a>
               <a
-                class="has-text-grey-lighter navbar-item has-text-grey has-background-primary-dark"
+                class="navbar-item"
               >
                 <router-link v-bind:to="{ path: '/recipe/all' }"
                   >All Recipes</router-link
@@ -64,21 +64,21 @@
           </div>
           <div class="navbar-item">
             <router-link
-              class="button is-warning has-background-primary-dark has-text-grey-lighter"
+              class="button"
               v-bind:to="{ path: '/my-meal-plans' }"
               ><i class="fas fa-drumstick-bite"></i>My Meal Plans</router-link
             >
           </div>
           <div class="navbar-item">
             <router-link
-              class="button is-warning has-background-primary-dark has-text-grey-lighter"
+              class="button"
               v-bind:to="{ path: '/ingredients' }"
               ><i class="fas fa-seedling"></i>Ingredients</router-link
             >
           </div>
           <div class="navbar-item">
             <router-link
-              class="button is-warning has-text-grey-lighter has-background-primary-dark"
+              class="button"
               v-bind:to="{ path: '/grocery-list' }"
               ><i class="fas fa-shopping-cart"></i>Grocery List</router-link
             >
@@ -89,7 +89,7 @@
           <div class="navbar-item">
             <div class="buttons">
               <router-link
-                class="button is-light button is-info is-outlined"
+                class="button"
                 v-bind:to="{ name: 'logout' }"
                 v-if="$store.state.token != ''"
                 >Logout</router-link
@@ -108,11 +108,14 @@ export default {};
 </script>
 <style>
 .navbar {
-  background-color: rgba(40, 65, 94, 0.3);
+  background-color: rgba(0,0,0,0.5);
   background-image: none;
 }
 .button {
   font-family: sans-serif;
+  background-color: #56aa54;
+  border: none;
+  color: #edeeeb;
 }
 .navbar-item {
   border-radius: 5px;
@@ -124,5 +127,24 @@ export default {};
 }
 i {
   margin-right: 10px;
+}
+.logout-button{
+height:40px;
+border-radius: 5px;
+width: 100px;
+background-color: #edeeeb;
+text-align: center;
+padding-top: 5px;
+text-decoration: none;
+}
+.navbar-brand .fas{
+  font-size: 60px;
+  top: 17px;
+  left: 24px;
+  color: #edeeeb;
+}
+.navbar-dropdown{
+  background-color: #56aa54;
+  color: #edeeeb;
 }
 </style>

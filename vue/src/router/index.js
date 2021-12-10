@@ -44,7 +44,7 @@ const router = new Router({
       }
     },
     {
-      path: '/my-recipes',
+      path: '/recipe/user/:userId',
       name: 'my-recipes',
       component: MyRecipes,
       meta:{
