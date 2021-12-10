@@ -16,6 +16,9 @@
         id="image2"
         src="https://admissions.ncsu.edu/wp-content/uploads/sites/19/2020/08/200.jpeg"
       />
+      <button @click.prevent="addToMyRecipes">Add To My Recipes</button>
+      <h4 v-show="success">Successfully added to My Recipes</h4>
+      <h4 v-show="error">There was an error adding the recipe to My Recipes</h4>
     </div>
   </div>
 </template>
@@ -26,12 +29,54 @@ export default {
   data() {
     return {
       recipe: [],
+      userRecipe: {
+        userId: "",
+        recipeId: "",
+      },
+      errorMsg:"",
+      success: false,
+      error: false
     };
   },
   created() {
     recipeService.getRecipeById(this.$route.params.id).then((response) => {
       this.recipe = response.data;
     });
+  },
+  methods: {
+    addToMyRecipes() {
+      const newUserRecipe = {
+        userId: Number(this.$store.state.user.userId),
+        recipeId: Number(this.$route.params.id),
+      };
+      recipeService
+        .addUserRecipe(newUserRecipe)
+        .then((response) => {
+          if (response.status === 201) {
+            console.log("Successfully added recipe to MyRecipes");
+            this.success = true;
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "adding");
+          this.error= true;
+        });
+    },
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " +
+          verb +
+          " card. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg = "Error " + verb + " card. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " card. Request could not be created.";
+      }
+    },
   },
 };
 </script>
@@ -66,26 +111,24 @@ h2 {
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "description img"
-    "instructions instructions"; 
+    "instructions instructions";
 }
 #image2 {
   height: 200px;
-  width:200px;
+  width: 200px;
   grid-area: img;
   margin-left: 120px;
   border-radius: 5px;
 }
-#description{
-    display:flex;
-    flex-direction: column;
-    margin-right: 50px;
+#description {
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
 }
-#instructions{
-    grid-area: instructions;
+#instructions {
+  grid-area: instructions;
 }
-p{
-    width: 90%;
+p {
+  width: 90%;
 }
-
-
 </style>
