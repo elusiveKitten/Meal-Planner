@@ -1,19 +1,25 @@
 <template>
     <div id="grocery-container">
         <nav-bar></nav-bar>
-        <h1>Grocery List</h1>
+        <google-map /> <!--added for googlemap function-->
         
     </div>
 </template>
 <script>
 import NavBar from '../components/NavBar.vue';
+import GoogleMap from '../components/GoogleMap'; //added for googlemap function
+
+
 export default {
   name: "grocery-list",
   components: {
-    NavBar
+    NavBar,
+    GoogleMap, //added for googlemap function
+    
   }
 };
-</script>
+</script>,
+
 <style>
 #grocery-container{
   height: 100vh;
