@@ -94,7 +94,7 @@ export default {
   align-items: center;
   flex-direction: column;
   overflow: hidden;
-  margin-top: -50px;
+  margin-top:-50px;
 }
 #image {
   height: 150px;
