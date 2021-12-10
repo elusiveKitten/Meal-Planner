@@ -76,5 +76,11 @@ namespace Capstone.Controllers
             UserRecipe addedRecipe = recipeDao.AddUserRecipe(userRecipe);
             return Created($"/recipe/user/{addedRecipe.UserId}", addedRecipe);
         }
+        [HttpPost("create")]
+        public ActionResult<UserRecipe> CreateNewRecipe(Recipe recipe)
+        {
+            UserRecipe createdRecipe = recipeDao.CreateNewRecipe(recipe);
+            return Created($"/recipe/user/{createdRecipe.UserId}", createdRecipe);
+        }
     }
 }
