@@ -40,7 +40,7 @@ namespace Capstone.Controllers
             }
             return StatusCode(503);
         }
-        [HttpGet("/{ingredientId}")]
+        [HttpGet("{ingredientId}")]
         public IActionResult GetIngredientById(int ingredientId)
         {
             Ingredient ingredient = ingredientDao.GetIngredientById(ingredientId);
@@ -55,6 +55,12 @@ namespace Capstone.Controllers
         {
             Ingredient added = ingredientDao.CreateIngredient(newIngredient);
             return Created($"/ingredient/new/{added.IngredientId}", added);
+        }
+        [HttpPost("recipe/add")]
+        public ActionResult<List<RecipeIngredient>> AddRecipeIngredient(AddedRecipeIngredient ingredient)
+        {
+            List<RecipeIngredient> added = ingredientDao.AddRecipeIngredient(ingredient);
+            return Created($"/ingredient/recipe/add/{added[added.Count-1].IngredientId}", added);
         }
     }
 }

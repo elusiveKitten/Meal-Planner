@@ -10,4 +10,18 @@ namespace Capstone.Models
         public int? IngredientId { get; set; }
         public string IngredientName { get; set; }
     }
+    public class RecipeIngredient
+    {
+        public int IngredientId { get; set; }
+        public string IngredientName { get; set; }
+        public string Amount { get; set; }
+        public string Unit { get; set; }
+    }
+    public class AddedRecipeIngredient
+    {
+        public int RecipeId { get; set; }
+        public string IngredientName { get; set; }
+        public string Amount { get; set; }
+        public string Unit { get; set; }
+    }
 }

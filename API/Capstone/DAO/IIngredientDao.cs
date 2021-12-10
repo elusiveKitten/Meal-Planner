@@ -15,5 +15,7 @@ namespace Capstone.DAO
         public Ingredient CreateIngredient(Ingredient ingredient);
      
         public Ingredient GetIngredientById(int ingredientId);
+
+        public List<RecipeIngredient> AddRecipeIngredient(AddedRecipeIngredient ingredient);
     }
 }
