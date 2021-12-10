@@ -1,16 +1,23 @@
 <template>
     <div id="my-recipes-container">
         <nav-bar></nav-bar>
-        <h1>My Recipes</h1>
+        <my-recipes-list></my-recipes-list>
         
     </div>
 </template>
 <script>
+
 import NavBar from '../components/NavBar.vue';
+import myRecipesList from '../components/MyRecipesList.vue';
+import "bulma/css/bulma.css";
+
+
 export default {
   name: "my-recipes",
   components: {
-    NavBar
+    NavBar,
+    myRecipesList
+    
   }
 };
 </script>
