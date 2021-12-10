@@ -19,5 +19,7 @@ namespace Capstone.DAO
         public List<MealRecipe> SearchByCategory(string category);
 
         public UserRecipe AddUserRecipe(UserRecipe newRecipe);
+
+        public UserRecipe CreateNewRecipe(Recipe newRecipe);
     }
 }
