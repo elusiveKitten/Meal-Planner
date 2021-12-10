@@ -85,7 +85,7 @@ export default {
 
 .search-pin {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   flex-direction: column;
   border: solid 2px #56aa54;
 }
