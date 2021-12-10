@@ -10,11 +10,14 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@mdi/font": "^6.5.95",
     "axios": "^0.21.1",
     "bulma": "^0.9.3",
     "core-js": "^3.9.1",
     "vue": "^2.6.12",
+    "vue-browser-geolocation": "^1.8.0",
     "vue-router": "^3.5.1",
+    "vue2-google-maps": "^0.10.7",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
