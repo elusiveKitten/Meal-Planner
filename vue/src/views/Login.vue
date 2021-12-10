@@ -1,5 +1,7 @@
 <template>
 <div class="background-img">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
 <div class="container">
 <div class="header">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,11 +76,20 @@ export default {
 <style scoped>
 @import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
 
-.background-img{
-  background-image:url('https://cdn.discordapp.com/attachments/916348750774013963/917534560487637042/background.jpg');
+.background-img{/*TODO - make background image less bright*/
+  background-image: url('https://cdn.discordapp.com/attachments/916348750774013963/917534560487637042/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+}
+.background-img:after{
+  background-image: url('https://cdn.discordapp.com/attachments/916348750774013963/917534560487637042/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  filter: brightness(20%);
+  z-index: -1;
+
 }
 .container{
 }
@@ -107,15 +118,16 @@ body{
   text-align:center;
   font-family: 'Sacramento', cursive;
   font-weight: bold;
-  text-shadow: 10px 5px 10px #010e02;
+  text-shadow: 10px 5px 10px #010e02, 10px 5px 25px black;
   color:#edeeeb;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: -90px;
 }
 #login-box{/*the transparent box*/
    width: 320px;
-    height: 450px;
+    height: 50%;
     background: rgba(0,0,0,0.5);
     color: #ffffff;
     padding: 0px 30px;
@@ -149,6 +161,7 @@ h2{
     margin-top: -40px;/*Login Here*/
     margin-bottom: 25px;
     padding:0px;
+    width: 260px;
     text-align:center;
     font-size:29px;
     display: flex;
@@ -182,14 +195,12 @@ input[type="password"]{
     border: none;
     border-radius: 19px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     height: 40px;
     width:250px;
     background: #56aa54;
     color:#ffffff;
-    font-size: 18px;
-    display:inline-block;
-    text-align: center;
+    font-size: 17px;/*TODO figure out how to center 'Login' better*/
 }
 
 #login-box input[type="submit"]:hover{/*hovering over the Login button changes its color*/
@@ -209,5 +220,8 @@ input[type="password"]{
 }
 footer{
   grid-area: footer;
+}
+.form-signin{
+  padding-bottom: 20px;
 }
 </style>

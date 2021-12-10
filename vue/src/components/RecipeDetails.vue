@@ -45,8 +45,8 @@ h2 {
   text-align: center;
   font-family: "Sacramento", cursive;
   font-weight: bold;
-  text-shadow: 10px 5px 10px #010e02;
-  color: rgb(128, 172, 128);
+  text-shadow: 2px 2px 1px #1a0b06;
+  color: #ee3f0a;
 }
 #card-container {
   display: flex;
@@ -55,12 +55,11 @@ h2 {
   flex-direction: column;
 }
 #recipe-card {
-  border: 1px black solid;
   border-radius: 6px;
   padding: 1rem;
   margin: 10px;
   width: 35%;
-  background-color: rgba(40, 65, 94, 0.3);
+  background-color:  rgba(0,0,0,0.5);
   color: white;
   font-weight: bold;
   display: grid;
@@ -74,6 +73,7 @@ h2 {
   width:200px;
   grid-area: img;
   margin-left: 120px;
+  border-radius: 5px;
 }
 #description{
     display:flex;
