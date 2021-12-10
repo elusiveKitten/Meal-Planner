@@ -114,6 +114,23 @@ namespace Capstone.DAO
                 throw new Exception();
             }
         }
+        public List<RecipeIngredient> AddRecipeIngredient(AddedRecipeIngredient ingredient)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO recipe_ingredients(recipe_id, ingredient_id, amount, unit) VALUES(" + ingredient.RecipeId + ", (SELECT ingredient_id FROM ingredients WHERE ingredient_name = '"+ingredient.IngredientName+"'), '"+ingredient.Amount+"', '"+ingredient.Unit+"')", conn);
+                    cmd.ExecuteNonQuery();
+                }
+                return GetIngredientsByRecipe(ingredient.RecipeId);
+            }
+            catch(SqlException)
+            {
+                throw new Exception("Could not add ingredient to recipe");
+            }
+        }
         private RecipeIngredient GetRecipeIngredientFromReader(SqlDataReader reader)
         {
             try

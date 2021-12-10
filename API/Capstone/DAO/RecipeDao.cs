@@ -192,6 +192,50 @@ namespace Capstone.DAO
                 throw new Exception();
             }
         }
+
+        public UserRecipe CreateNewRecipe(Recipe newRecipe)
+        {
+            UserRecipe newUserRecipe = new UserRecipe()
+            {
+                UserId = newRecipe.UserId
+            };
+            try
+            {
+                using(SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO recipes(recipe_name, calories, instructions) VALUES('"+newRecipe.RecipeName+"','"+newRecipe.Calories+"','"+newRecipe.Instructions+"'); SELECT @@IDENTITY;", conn);
+                    newUserRecipe.RecipeId = Convert.ToInt32(cmd.ExecuteScalar());
+                    conn.Close();
+                }
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO recipes_users(recipe_id, user_id) VALUES(" + newUserRecipe.RecipeId + ", " + newUserRecipe.UserId + ");", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                using(SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO recipe_category(recipe_id, category_id) VALUES( " + newUserRecipe.RecipeId + ", (SELECT category_id FROM category WHERE category_name = '" + newRecipe.Category + "'))", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                using(SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO recipe_dish_type(dish_type_id, recipe_id) VALUES((SELECT dish_type_id FROM dish_type WHERE dish_type_name = '" + newRecipe.DishType + "'), " + newUserRecipe.RecipeId + ")", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                return ConfirmUserRecipe(newUserRecipe.UserId, newUserRecipe.RecipeId);
+            }
+            catch(SqlException)
+            {
+                throw new Exception("Failed to create new recipe");
+            }
+        }
         public List<MealRecipe> SearchByIngredient(string ingredient)
         {
             List<MealRecipe> recipes = new List<MealRecipe>();
