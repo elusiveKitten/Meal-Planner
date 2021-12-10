@@ -8,5 +8,8 @@ export default{
     },
     getRecipeById(recipeId){
         return http.get(`/recipe/${recipeId}`)
-    }
+    },
+    addUserRecipe(newUserRecipe){
+        return http.post(`/recipe/add`,newUserRecipe);
+    },
 }

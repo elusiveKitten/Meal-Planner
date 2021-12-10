@@ -94,7 +94,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  overflow: hidden;
+  overflow: auto;
 }
 #image {
   height: 150px;
