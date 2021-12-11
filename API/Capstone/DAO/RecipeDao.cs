@@ -277,7 +277,6 @@ namespace Capstone.DAO
             {
                 MealRecipe recipe = new MealRecipe()
                 {
-                    //recipes.recipe_id could be an issue in the future!! Otherwise it may be the fix!
                     RecipeId = Convert.ToInt32(reader["recipe_id"]),
                     RecipeName = Convert.ToString(reader["recipe_name"]),
                     Calories = Convert.ToString(reader["calories"]),
@@ -291,7 +290,6 @@ namespace Capstone.DAO
             {
                 throw new Exception();
             }
-
         }
     }
 }

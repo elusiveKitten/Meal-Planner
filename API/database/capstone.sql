@@ -474,11 +474,14 @@ VALUES
 	(8, 3),
 	(10,3)
 
+INSERT INTO meal_plan(meal_plan_name) VALUES('cheese delight')
 
+INSERT INTO meal_plan_user(meal_plan_id, user_id) VALUES((SELECT meal_plan_id FROM meal_plan WHERE meal_plan_name = 'cheese delight'), 3)
 
-
-
-
+INSERT INTO meal_plan_recipe(meal_plan_id, recipe_id) VALUES 
+	((SELECT meal_plan_id FROM meal_plan WHERE meal_plan_name = 'cheese delight'), 1),
+	((SELECT meal_plan_id FROM meal_plan WHERE meal_plan_name = 'cheese delight'), 4),
+	((SELECT meal_plan_id FROM meal_plan WHERE meal_plan_name = 'cheese delight'), 10);
 
 
 
