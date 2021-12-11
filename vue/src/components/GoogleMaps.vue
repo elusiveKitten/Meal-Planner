@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="grocery-stores">
-      <h3>Find a Grocery Store Nearby</h3>
+      <p>Find a Grocery Store Nearby</p>
 
       <label>
-        <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
+        <gmap-autocomplete class="enter-location-box" @place_changed="initMarker"></gmap-autocomplete>
      
       </label>
-      <button @click="addLocationMarker">Add</button>
+      <button id="button-addpin" @click="addLocationMarker">ADD A PIN</button>
       <br/>
  
     <!-- </div>
@@ -28,7 +28,7 @@
     </div>
   </div>
 </template>
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXt6fzkeW76UH90EaA4rAhro7woiMvccE&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXt6fzkeW76UH90EaA4rAhro7woiMvccE&callback=myMap"></script>
 <script>
 export default {
   name: "AddGoogleMap",
@@ -99,5 +99,24 @@ export default {
 .g-map {
     display: flex;
     align-items: center;
+}
+.enter-location-box {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+#locationFilter {
+  width: 35%;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+input {
+  padding: 12px;
+  font-size: 1.25em;
+  border-radius: 6px;
+  border: 1px solid rgb(129, 129, 129);
+}
+#button-addpin {
+  margin: 12px;
+  font-size: 1.10em;
+  color:  #56aa54;
 }
 </style>     

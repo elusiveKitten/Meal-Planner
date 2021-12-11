@@ -1,6 +1,7 @@
 <template>
     <div id="grocery-container">
         <nav-bar></nav-bar>
+        <add-grocery-list />
         <google-maps />
         <!-- <google-map /> added for googlemap function
         <nearby-places /> -->
@@ -12,6 +13,7 @@ import NavBar from '../components/NavBar.vue';
 // import GoogleMap from '../components/GoogleMap'; //added for googlemap function
 // import NearbyPlaces from '../components/NearbyPlaces';
 import GoogleMaps from '../components/GoogleMaps'
+import AddGroceryList from '../components/AddGroceryList';
 
 export default {
   name: "grocery-list",
@@ -19,7 +21,8 @@ export default {
     NavBar,
     // GoogleMap, //added for googlemap function
     // NearbyPlaces,
-    GoogleMaps
+    GoogleMaps,
+    AddGroceryList
   }
 };
 </script>,
