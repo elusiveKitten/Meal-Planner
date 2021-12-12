@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="grocery-stores">
-      <p>Find a Grocery Store Nearby</p>
+      <h4 id="map-header-text">Find a Grocery Store Nearby</h4>
 
       <label>
         <gmap-autocomplete class="enter-location-box" @place_changed="initMarker"></gmap-autocomplete>
      
       </label>
-      <button id="button-addpin" @click="addLocationMarker">ADD A PIN</button>
+      <button id="button-addpin" @click="addLocationMarker">Add Pin</button>
       <br/>
  
     <!-- </div>
@@ -16,7 +16,7 @@
     <gmap-map
         :zoom="11"    
         :center="center"
-        style="width:35vw; height:50vh; margin; auto;"
+        style="width:25vw; height: 35vh; margin; auto;"
       >
       <gmap-marker
         :key="index"
@@ -100,23 +100,29 @@ export default {
     display: flex;
     align-items: center;
 }
-.enter-location-box {
-  width: 100%;
+.enter-location-box { /*adjust the size of the input box*/
+  width: 25vw;
+  height: 4vh;
   background-color: rgba(255, 255, 255, 0.4);
 }
 #locationFilter {
-  width: 35%;
+  width: 25vw;
   background-color: rgba(255, 255, 255, 0.4);
 }
-input {
+/* input {
   padding: 12px;
-  font-size: 1.25em;
+  font-size: 1em;
   border-radius: 6px;
   border: 1px solid rgb(129, 129, 129);
-}
+} */
 #button-addpin {
-  margin: 12px;
-  font-size: 1.10em;
+  margin: 5px;
+  font-size: 1em;
   color:  #56aa54;
+}
+#map-header-text {
+  font-size: 1.35em;
+  font-weight: bold;
+  color: #286128;
 }
 </style>     

@@ -17,7 +17,7 @@
       /> -->
             <input class="add-ingredient-box" type="text" v-model="newItem" placeholder="Add New Ingredient" />
             <br/>
-            <button id="button-submit" type="submit" class="button-save">Save</button>
+            <button id="button-submit" type="submit" class="button-save">Add</button>
             </form>
         </div>
 
@@ -35,7 +35,7 @@ export default {
         }
     },
     methods: {
-        created(){
+        createGroceryItems(){
       GroceryListService.getIngredients(this.$store.state.user.userId).then((response) =>{
           this.getIngredients = response.data;
       });
@@ -55,18 +55,19 @@ margin-top: 20px;
 margin-left: 20px;
 }
 .add-ingredient-box {
-  width: 20%;
+  width: 25vw;
+  height: 4vh;
   background-color: rgba(255, 255, 255, 0.4);
 }
 input {
   padding: 12px;
-  font-size: 1.25em;
+  font-size: 1em;
   border-radius: 6px;
   border: 1px solid rgb(129, 129, 129);
 }
 #button-submit {
   margin: 12px;
-  font-size: 1.10em;
+  font-size: 1em;
   color:  #56aa54;
 }
 </style>
