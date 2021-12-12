@@ -20,6 +20,7 @@
       >
       <gmap-marker
         :key="index"
+        title: p.name
         v-for="(m, index) in locationMarkers"
         :position="m.position"
         @click="center=m.position"
@@ -63,20 +64,6 @@ export default {
         this.center = marker;
         this.existingPlace = null;
       };
-        var infowindow = new google.maps.infowindow();
-	this.places.forEach((place) => {
-		const lat = place.geometry.location.lat;
-		const lng = place.geometry.location.lng;
-		let marker = new google.maps.Marker({
-			position: new google.maps.LatLng(lat, lng),
-			map: map
-    });
-    google.maps.event.addListener(marker, "click", () => {
-      infowindow.setContent(
-        <div class="header">${place.name}${place.vicinity}</div>
-      )
-    })
-	})
     },
     locateGeoLocation: function() {
       navigator.geolocation.getCurrentPosition(res => {

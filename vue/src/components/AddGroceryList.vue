@@ -48,7 +48,7 @@ export default {
 .title{/*"Grocery List"*/
 font-family: 'Sacramento', cursive;
 font-size: 55px;
-color:#56aa54;
+color:#ee3f0a;
 text-shadow: 2px 2px 1px #1a0b06;
 font-weight: bold;
 margin-top: 20px;
