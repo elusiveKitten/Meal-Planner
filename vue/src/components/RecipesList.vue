@@ -1,6 +1,6 @@
 <template>
   <div id="recipe-display">
-      <h1 id="title">{{ title }}</h1>
+    <h1 id="title">{{ title }}</h1>
     <div class="recipes">
       <select id="categoryFilter" v-model="filter.category">
         <option value="">All Categories</option>
@@ -77,14 +77,15 @@ export default {
 };
 </script>
 <style>
-.recipe {/*the dark grey transparent boxes each recipe is in*/
+.recipe {
+  /*the dark grey transparent boxes each recipe is in*/
   border-radius: 6px;
   padding: 1rem;
   margin: 10px;
   display: flex;
   justify-content: space-between;
   width: 35%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   font-weight: bold;
 }
@@ -94,27 +95,27 @@ export default {
   align-items: center;
   flex-direction: column;
   overflow: hidden;
-  margin-top:-50px;
+  margin-top: -50px;
 }
 #image {
   height: 150px;
   border-radius: 5px;
 }
 #title {
-font-family: 'Sacramento', cursive;
-font-size: 55px;
-color:#ee3f0a;
-text-shadow: 2px 2px 1px #1a0b06;
-font-weight: bold;
-margin-top: 20px;
-margin-left: 20px;
+  font-family: "Sacramento", cursive;
+  font-size: 55px;
+  color: #ee3f0a;
+  text-shadow: 2px 2px 1px #1a0b06;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 #recipeNameFilter {
   width: 35%;
   background-color: rgba(255, 255, 255, 0.4);
 }
 ::placeholder {
-  color: rgba(0,0,0,0.5);
+  color: rgba(0, 0, 0, 0.5);
   font-size: 1em;
 }
 input {
@@ -145,16 +146,16 @@ h3 {
   flex-direction: column;
   justify-content: space-evenly;
 }
-select{
-    padding: 6px;
-    border-radius: 6px;
-    background-color:rgba(255, 255, 255, 0.4);
-    font-weight: bolder;
-    width:35%;
-    color:rgb(141, 141, 141);
-    margin-bottom: 10px;
+select {
+  padding: 6px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.4);
+  font-weight: bolder;
+  width: 35%;
+  color: rgb(141, 141, 141);
+  margin-bottom: 10px;
 }
-option{
-    background-color:rgba(255, 255, 255, 0.4);
+option {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 </style>
