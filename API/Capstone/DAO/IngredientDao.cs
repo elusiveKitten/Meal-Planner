@@ -131,6 +131,39 @@ namespace Capstone.DAO
                 throw new Exception("Could not add ingredient to recipe");
             }
         }
+        public List<string> GetUserGroceryList(int userId)
+        {
+            List<string> groceryList = new List<string>();
+            try
+            {
+                using(SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT ingredient_name FROM ingredients " +
+                        "JOIN recipe_ingredients ON ingredients.ingredient_id = recipe_ingredients.ingredient_id " +
+                        "JOIN recipes ON recipe_ingredients.recipe_id = recipes.recipe_id " +
+                        "JOIN meal_plan_recipe ON recipes.recipe_id = meal_plan_recipe.recipe_id " +
+                        "JOIN meal_plan ON meal_plan_recipe.meal_plan_id = meal_plan.meal_plan_id " +
+                        "JOIN meal_plan_user ON meal_plan.meal_plan_id = meal_plan_user.meal_plan_id " +
+                        "WHERE user_id = " + userId + "", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        string ingredient = Convert.ToString(reader["ingredient_name"]);
+                        if (ingredient != null)
+                        {
+                           groceryList.Add(ingredient);
+                        }
+                    }
+                    reader.Close();
+                }
+                return groceryList;
+            }
+            catch(SqlException)
+            {
+                throw new Exception();
+            }
+        }
         private RecipeIngredient GetRecipeIngredientFromReader(SqlDataReader reader)
         {
             try

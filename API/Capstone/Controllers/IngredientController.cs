@@ -19,7 +19,6 @@ namespace Capstone.Controllers
         {
             ingredientDao = _ingredientDao;
         }
-
         [HttpGet("recipe/{recipeId}")]
         public IActionResult GetIngredientsByRecipe(int recipeId)
         {
@@ -61,6 +60,16 @@ namespace Capstone.Controllers
         {
             List<RecipeIngredient> added = ingredientDao.AddRecipeIngredient(ingredient);
             return Created($"/ingredient/recipe/add/{added[added.Count-1].IngredientId}", added);
+        }
+        [HttpGet("grocerylist/{userId}")]
+        public ActionResult<List<string>> GetGroceryList(int userId)
+        {
+            List<string> groceryList = ingredientDao.GetUserGroceryList(userId);
+            if(groceryList!= null)
+            {
+                return Ok(groceryList);
+            }
+            return StatusCode(404);
         }
     }
 }
