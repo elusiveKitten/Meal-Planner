@@ -45,5 +45,15 @@ namespace Capstone.Controllers
             }
             return StatusCode(404);
         }
+        [HttpGet("{id}")]
+        public ActionResult<MealPlan> GetMealPlanById(int id)
+        {
+            MealPlan mealPlan = mealPlanDao.GetMealPlanById(id);
+            if(mealPlan !=null)
+            {
+                return Ok(mealPlan);
+            }
+            return StatusCode(404);
+        }
     }
 }

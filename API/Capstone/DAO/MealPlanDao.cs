@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Capstone.DAO;
 
 namespace Capstone.DAO
 {
@@ -100,6 +101,7 @@ namespace Capstone.DAO
                 throw new Exception();
             }
         }
+        
         public MealPlan CreateMealPlan(UserMealPlan mealPlan)
         {
             int mealPlanId;
