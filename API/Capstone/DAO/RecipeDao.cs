@@ -179,6 +179,14 @@ namespace Capstone.DAO
         {
             try
             {
+                List<MealRecipe> mealRecipes = GetRecipesByUser(newRecipe.UserId);
+                foreach(MealRecipe mealRecipe in mealRecipes)
+                {
+                    if(mealRecipe.RecipeId == newRecipe.RecipeId)
+                    {
+                        return ConfirmUserRecipe(newRecipe.UserId, newRecipe.RecipeId);
+                    }
+                }
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
