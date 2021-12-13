@@ -279,6 +279,23 @@ namespace Capstone.DAO
                 throw new Exception();
             }
         }
+        public MealRecipe AddRecipeToMealPlan(AddedMealRecipe mealRecipe)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO meal_plan_recipe(meal_plan_id, recipe_id) VALUES (" + mealRecipe.MealPlanId + ", " + mealRecipe.RecipeId + ")", conn);
+                    cmd.ExecuteNonQuery();
+                    return GetRecipe(mealRecipe.RecipeId);
+                }
+            }
+            catch (SqlException)
+            {
+                throw new Exception();
+            }
+        }
         private MealRecipe GetMealRecipeFromReader(SqlDataReader reader)
         {
             try

@@ -21,5 +21,7 @@ namespace Capstone.DAO
         public UserRecipe AddUserRecipe(UserRecipe newRecipe);
 
         public UserRecipe CreateNewRecipe(Recipe newRecipe);
+
+        public MealRecipe AddRecipeToMealPlan(AddedMealRecipe mealRecipe);
     }
 }
