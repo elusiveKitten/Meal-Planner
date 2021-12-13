@@ -1,16 +1,19 @@
 <template>
     <div id="ingredients-container">
         <nav-bar></nav-bar>
+        <ingredients-list />
         <h1>Ingredients</h1>
         
     </div>
 </template>
 <script>
+import IngredientsList from '../components/IngredientsList.vue';
 import NavBar from '../components/NavBar.vue';
 export default {
   name: "ingredients",
   components: {
-    NavBar
+    NavBar,
+    IngredientsList
   }
 };
 </script>
