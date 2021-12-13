@@ -17,6 +17,7 @@ namespace Capstone.DAO
         public Ingredient GetIngredientById(int ingredientId);
 
         public List<RecipeIngredient> AddRecipeIngredient(AddedRecipeIngredient ingredient);
+
         public List<string> GetUserGroceryList(int userId);
     }
 }

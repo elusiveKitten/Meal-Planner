@@ -9,8 +9,11 @@ namespace Capstone.DAO
     public interface IMealPlanDao
     {
         public MealPlan GetMealPlanById(int mealPlanId);
+
         public MealPlan CreateMealPlan(UserMealPlan mealPlan);
+
         public List<MealPlan> GetMealPlanByUser(int userId);
+
         public List<SimplifiedRecipe> GetMealPlanRecipes(int mealPlanId);
     }
 }
