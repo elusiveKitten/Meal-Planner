@@ -67,14 +67,14 @@ export default {
         this.errorMsg =
           "Error " +
           verb +
-          " card. Response received was '" +
+          " recipe. Response received was '" +
           error.response.statusText +
           "'.";
       } else if (error.request) {
-        this.errorMsg = "Error " + verb + " card. Server could not be reached.";
+        this.errorMsg = "Error " + verb + " recipe. Server could not be reached.";
       } else {
         this.errorMsg =
-          "Error " + verb + " card. Request could not be created.";
+          "Error " + verb + " recipe. Request could not be created.";
       }
     },
   },

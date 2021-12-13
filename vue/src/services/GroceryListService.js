@@ -5,9 +5,6 @@ const http = axios.create({
 export default{
     getIngredients(){
         return http.get('/ingredient/all')
-    },
-    addIngredient(newIngredient){
-        return http.post(`/ingredient/new`,newIngredient);
     }
-
+    
 }
