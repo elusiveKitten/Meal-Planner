@@ -153,6 +153,7 @@ h2{/* the Create Acct msg*/
   width: 260px;
   text-align:center;
   font-size:27px;
+  color: #56aa54;
   display: flex;
   align-items: flex-start;
   justify-content: center;

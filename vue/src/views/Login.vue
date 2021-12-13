@@ -165,6 +165,7 @@ h2{
     text-align:center;
     font-size:29px;
     display: flex;
+    color: #56aa54;
     align-items: flex-start;
     justify-content: center;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
