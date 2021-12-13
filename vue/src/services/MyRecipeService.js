@@ -5,11 +5,6 @@ const http = axios.create({
 export default{
     getRecipes(userId){
         return http.get(`/recipe/user/${userId}`)
-    },
-    /*addRecipe(recipe){
-        return http.post('/recipe', recipe);
-    },
-    updateRecipe(recipe){
-        return http.put(`/recipe/${recipeId}`, recipe);
-    }*/
+    }
+    
 }

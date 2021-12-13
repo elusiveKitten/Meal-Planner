@@ -4,9 +4,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
         <h1 class="title">My Recipes</h1>
+        <new-recipe-form />
+        <my-recipe-service />
         <div class= "recipes">
         <div class="recipe"
-        v-for="recipe in userRecipes"
+        v-for="recipe in filteredList"
         v-bind:key="recipe.userId">
         <div id="info">
         <h2 id="recipe-name">{{recipe.recipeName}}</h2>
@@ -15,19 +17,28 @@
          </div>
         <img id="image" v-bind:src="'https://via.placeholder.com/150'" />
         </div>
-        
+    
         </div>
         </div>
 </template>
 <script>
 import myRecipeService from '../services/MyRecipeService';
+import NewRecipeForm from '../components/NewRecipeForm.vue';
 import "bulma/css/bulma.css";
 
 export default {
+    components:{
+        myRecipeService,
+        NewRecipeForm
+    },
   data(){
       return{
-          userRecipes: []
-
+          userRecipes: [],
+          filter:{
+              recipeName: "",
+              dishType: "",
+              category: "",
+          }
       };
   },
   created(){
@@ -35,6 +46,29 @@ export default {
           this.userRecipes = response.data;
       });
   },
+  computed:{
+      filteredList(){
+          let filteredRecipes = this.userRecipes;
+          if(this.filter.recipeName != "") {
+              filteredRecipes = filteredRecipes.filter((recipe) =>
+              recipe.recipeName.toLowerCase().includes(this.filter.recipeName.toLowerCase())
+              );
+          }
+          if(this.filter.dishType != ""){
+              filteredRecipes = filteredRecipes.filter((recipe) =>
+              recipe.dishType === this.filter.dishType
+              );
+          }
+           if (this.filter.category != "") {
+            filteredRecipes = filteredRecipes.filter((recipe) => 
+            recipe.category === this.filter.category
+            );
+          
+      }
+      return filteredRecipes;
+      }
+  }
+  
   
 };
 </script>
