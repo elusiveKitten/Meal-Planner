@@ -13,19 +13,20 @@
     <!-- </div>
     <br>
     <div class="g-map"> -->
-    <gmap-map
+    <GmapMap
         :zoom="11"    
         :center="center"
-        style="width:25vw; height: 35vh; margin; auto;"
+        style="width:25vw; height: 35vh"
       >
-      <gmap-marker
+      <GmapMarker
         :key="index"
         title: p.name
         v-for="(m, index) in locationMarkers"
         :position="m.position"
+        :clickable="true"
         @click="center=m.position"
-      ></gmap-marker>
-    </gmap-map>
+      ></GmapMarker>
+    </GmapMap>
     </div>
   </div>
 </template>
@@ -64,7 +65,13 @@ export default {
         this.center = marker;
         this.existingPlace = null;
       };
+          google.maps.event.addListener(marker, 'click', function() {
+      infowindow.setContent(place.name);
+      infowindow.open(map, this);
+    });
     },
+    
+
     locateGeoLocation: function() {
       navigator.geolocation.getCurrentPosition(res => {
         this.center = {
@@ -78,7 +85,7 @@ export default {
 </script>
 <style>
 .grocery-stores {
-  display: flex;
+
   align-items: center;
   flex-direction: column;
   border: solid 2px #56aa54;
