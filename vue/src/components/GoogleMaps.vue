@@ -85,10 +85,11 @@ export default {
 </script>
 <style>
 .grocery-stores {
-
-  align-items: center;
+  margin-top: 150px;
+  display: flex;
+  align-items: flex-end;
   flex-direction: column;
-  border: solid 2px #56aa54;
+  justify-content: flex-end;
 }
 .g-map {
     display: flex;
