@@ -1,51 +1,55 @@
 <template>
   <div>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
-        <h1 class="title">Grocery List</h1>
-        <!-- <div id="grocery-search">
-            <form
-            id="add-grocery-ingredient"
-            v-on:submit.prevent="createGroceryItems()"
-            >
-            <input class="add-ingredient-box" type="text" v-model="newItem" placeholder="Add New Ingredient" />
-            <br/>
-            <button id="button-submit" type="submit" class="button-save">Add</button>
-            </form>
-        </div> -->
-        <div class="grocery-list">
-            <table>
-                <thead>
-                <tr>
-                    <th>Ingredient</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="ingredient in this.$store.state.ingredients" v-bind:key="ingredient.id">
-                    </tr>
-                </tbody>
-            </table>
+    <div class="grocerylist-display">
+      <h1 id="title">Grocery List</h1>
+      <div class="grocery-list">
+        <div class="ingredients"
+        v-for="ingredient in groceryItems"
+        v-bind:key="ingredient.userId">
+        <div id="info">
+          <h2 id="ingredient-name">{{ingredient.ingredientName}}</h2>
+          <router-link id="link-to-detail" :to="{name: 'ingredient-detail', params: {id: ingredient.ingredientId} }">Ingredient Details</router-link>
         </div>
+        </div>
+      </div>
+    </div>
+        
+
   </div>
 </template>
 
 <script>
-import GroceryListService from '../services/GroceryListService';
-import "bulma/css/bulma.css";
+import groceryListService from '../services/GroceryListService';
 
+import "bulma/css/bulma.css";
 export default {
-    name: "grocery-list",
-    methods: {
-        getIngredients() {
-            GroceryListService.list().then(response => {
-                this.$store.commit("SET_INGREDIENTS", response.data);
-            });
-        },
-        created() {
-            this.getIngredients();
+    data() {
+        return {
+            newItem: "",
+            groceryItems: [],
+            fileter: {
+              ingredientName: "",
+            }
         }
-    }
+    },
+    created() {
+      groceryListService.getIngredients(this.$store.state.user.userId).then((response) => {
+        this.groceryItems=response.data;
+      });
+    },
+      computed: {
+    filteredList() {
+      let filteredIngredients = this.ingredients;
+      if (this.filter.ingredientName != "") {
+        filteredIngredients = filteredIngredients.filter((ingredient) =>
+          ingredient.ingredientName
+            .toLowerCase()
+            .includes(this.filter.ingredientName.toLowerCase())
+        );
+      }
+      return filteredIngredients;
+    },
+  },
 }
 </script>
 
@@ -58,21 +62,5 @@ text-shadow: 2px 2px 1px #1a0b06;
 font-weight: bold;
 margin-top: 20px;
 margin-left: 20px;
-}
-.add-ingredient-box {
-  width: 25vw;
-  height: 4vh;
-  background-color: rgba(255, 255, 255, 0.4);
-}
-input {
-  padding: 12px;
-  font-size: 1em;
-  border-radius: 6px;
-  border: 1px solid rgb(129, 129, 129);
-}
-#button-submit {
-  margin: 12px;
-  font-size: 1em;
-  color:  #56aa54;
 }
 </style>
