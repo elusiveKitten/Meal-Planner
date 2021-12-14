@@ -65,7 +65,7 @@
           <div class="navbar-item">
             <router-link
               class="button"
-              v-bind:to="{ path: '/my-meal-plans' }"
+              v-bind:to="{ name: 'my-meal-plans' }"
               ><i class="fas fa-drumstick-bite"></i>My Meal Plans</router-link
             >
           </div>

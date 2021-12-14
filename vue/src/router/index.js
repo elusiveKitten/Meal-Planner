@@ -52,7 +52,7 @@ const router = new Router({
       }
     },
     {
-      path: '/my-meal-plans',
+      path: '/my-meal-plans/:userId',
       name: 'my-meal-plans',
       component: MyMealPlans,
       meta:{
