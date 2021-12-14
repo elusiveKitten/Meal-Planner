@@ -31,7 +31,7 @@ CREATE TABLE recipes (
 	recipe_name VARCHAR(200) NOT NULL,
 	calories VARCHAR(100) NULL,
 	instructions VARCHAR(2000) NOT NULL,
-	recipe_image VARCHAR(512) NULL
+	recipe_image VARCHAR(512) NOT NULL,
 	CONSTRAINT PK_recipes PRIMARY KEY (recipe_id),
 	UNIQUE(recipe_name)
 

@@ -1,14 +1,13 @@
 <template>
   <div>
     <div class="grocerylist-display">
-      <h1 id="title">Grocery List</h1>
+      <h1 id="title1">Grocery List</h1>
       <div class="grocery-list">
         <div class="ingredients"
         v-for="ingredient in groceryItems"
-        v-bind:key="ingredient.userId">
+        v-bind:key="ingredient">
         <div id="info">
-          <h2 id="ingredient-name">{{ingredient.ingredientName}}</h2>
-          <router-link id="link-to-detail" :to="{name: 'ingredient-detail', params: {id: ingredient.ingredientId} }">Ingredient Details</router-link>
+          <p id="ingredient-name">{{ingredient}}</p>
         </div>
         </div>
       </div>
@@ -27,8 +26,8 @@ export default {
         return {
             newItem: "",
             groceryItems: [],
-            fileter: {
-              ingredientName: "",
+            filter: {
+              ingredient: "",
             }
         }
     },
