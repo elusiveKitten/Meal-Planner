@@ -12,4 +12,7 @@ export default{
     addUserRecipe(newUserRecipe){
         return http.post(`/recipe/add`,newUserRecipe);
     },
+    createRecipe(newRecipe){
+        return http.post(`/recipe/create`, newRecipe);
+    }
 }

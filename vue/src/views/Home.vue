@@ -5,9 +5,9 @@
     <body>
       <div id="welcome-box">
       <h1 id="welcome">Welcome to Meal Planner!</h1>
-      <p id="theWhat">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget pellentesque eros. Mauris pellentesque sed augue id tincidunt. Suspendisse mattis congue urna, eget volutpat mi semper nec. Vestibulum mi massa, consectetur in nibh quis, rutrum dictum diam. Nam bibendum arcu id justo auctor, ut ultrices metus pretium. Phasellus eu blandit mi. Nam ac consectetur ante, ut porttitor enim. Donec a porta sapien. Phasellus fringilla arcu at lacus eleifend, ac dignissim est mattis.</p>
+      <p id="theWhat">Meal Planner was designed to alleviate the pain associated with the question, "What's for dinner?" Our goal is to make it easier to design your menu for the week - You can browse our varied selection of recipes or add your own recipes to the site. Looking for easy meals only? Just use our dropdown bar to filter your results! You can design a meal plan that includes all your recipes for one night or even a whole week.</p>
       <img id="recipe-pic" src="../views/recipes_img.jpg">
-      <p id="whoWeAre">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget pellentesque eros. Mauris pellentesque sed augue id tincidunt. Suspendisse mattis congue urna, eget volutpat mi semper nec. Vestibulum mi massa, consectetur in nibh quis, rutrum dictum diam. Nam bibendum arcu id justo auctor, ut ultrices metus pretium. Phasellus eu blandit mi. Nam ac consectetur ante, ut porttitor enim. Donec a porta sapien. Phasellus fringilla arcu at lacus eleifend, ac dignissim est mattis.</p>
+      <p id="whoWeAre">Have an ingredient in your pantry you want to use up? Search our recipes by ingredient and pull up recipes that use it! You can create a grocery list right on our site and find a grocery store nearby. Life can get busy - let us help you simplify dinner.</p>
       </div>
     </body>
   
