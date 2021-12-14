@@ -88,5 +88,15 @@ namespace Capstone.Controllers
             MealRecipe added = recipeDao.AddRecipeToMealPlan(mealPlanRecipe);
             return Created($"mealplan/add/{added.RecipeId}", added);
         }
+        [HttpDelete("mealplan/delete")]
+        public IActionResult DeleteRecipeFromMealPlan(AddedMealRecipe delete)
+        {
+            bool final = recipeDao.DeleteRecipeFromMealPlan(delete);
+            if(final == true)
+            {
+                return Ok(final);
+            }
+            return StatusCode(504);
+        }
     }
 }
