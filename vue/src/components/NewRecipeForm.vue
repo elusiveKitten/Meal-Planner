@@ -2,7 +2,7 @@
 <div>
     <a id="add-recipe-button" href="#" v-if="showForm === false"
     v-on:click.prevent="showForm = true">Add New Recipe</a>
-     <form class ="form-box" v-on:submit.prevent="addNewRecipe" v-if="showForm === true">
+     <form class ="form-box" v-on:submit="addNewRecipe" v-if="showForm === true">
          <div class="form-element">
             <label for="recipe-name">Recipe Name:</label>
             <input id="recipe-box" placeholder="Type Recipe Name Here" type="text" v-model="recipe.recipeName" required autofocus/>
