@@ -150,7 +150,7 @@ namespace Capstone.DAO
                     while (reader.Read())
                     {
                         string ingredient = Convert.ToString(reader["ingredient_name"]);
-                        if (ingredient != null)
+                        if (ingredient != null && !groceryList.Contains(ingredient))
                         {
                            groceryList.Add(ingredient);
                         }

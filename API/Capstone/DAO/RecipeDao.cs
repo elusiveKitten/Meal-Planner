@@ -24,7 +24,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, category_name, dish_type_name  FROM recipes " +
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, recipe_image, category_name, dish_type_name  FROM recipes " +
                         "JOIN recipe_category ON recipes.recipe_id = recipe_category.recipe_id " +
                         "JOIN recipe_dish_type ON recipes.recipe_id = recipe_dish_type.recipe_id " +
                         "JOIN category ON recipe_category.category_id = category.category_id " +
@@ -60,7 +60,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, category_name, dish_type_name  FROM recipes " +
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, recipe_image, category_name, dish_type_name FROM recipes " +
                         "JOIN recipe_category on recipes.recipe_id = recipe_category.recipe_id " +
                         "JOIN recipe_dish_type on recipes.recipe_id = recipe_dish_type.recipe_id " +
                         "JOIN category on recipe_category.category_id = category.category_id " +
@@ -119,7 +119,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, category_name, dish_type_name  FROM recipes " +
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, recipe_image, category_name, dish_type_name  FROM recipes " +
                         "JOIN recipe_category on recipes.recipe_id = recipe_category.recipe_id " +
                         "JOIN recipe_dish_type on recipes.recipe_id = recipe_dish_type.recipe_id " +
                         "JOIN category on recipe_category.category_id = category.category_id " +
@@ -151,7 +151,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, category_name, dish_type_name FROM recipes " +
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, recipe_image, category_name, dish_type_name FROM recipes " +
                         "JOIN recipe_category on recipes.recipe_id = recipe_category.recipe_id " +
                         "JOIN recipe_dish_type on recipes.recipe_id = recipe_dish_type.recipe_id " +
                         "JOIN category on recipe_category.category_id = category.category_id " +
@@ -212,7 +212,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO recipes(recipe_name, calories, instructions) VALUES('" + newRecipe.RecipeName + "','" + newRecipe.Calories + "','" + newRecipe.Instructions + "'); SELECT @@IDENTITY;", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO recipes(recipe_name, calories, instructions, recipe_image) VALUES('" + newRecipe.RecipeName + "','" + newRecipe.Calories + "','" + newRecipe.Instructions + "', '"+newRecipe.Image+"'); SELECT @@IDENTITY;", conn);
                     newUserRecipe.RecipeId = Convert.ToInt32(cmd.ExecuteScalar());
                     conn.Close();
                 }
@@ -253,7 +253,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, category_name, dish_type_name FROM recipes " +
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, recipe_image, category_name, dish_type_name FROM recipes " +
                         "JOIN recipe_category on recipes.recipe_id = recipe_category.recipe_id " +
                         "JOIN recipe_dish_type on recipes.recipe_id = recipe_dish_type.recipe_id " +
                         "JOIN category on recipe_category.category_id = category.category_id " +
@@ -352,6 +352,7 @@ namespace Capstone.DAO
                     RecipeName = Convert.ToString(reader["recipe_name"]),
                     Calories = Convert.ToString(reader["calories"]),
                     Instructions = Convert.ToString(reader["instructions"]),
+                    Image = Convert.ToString(reader["recipe_image"]),
                     Category = Convert.ToString(reader["category_name"]),
                     DishType = Convert.ToString(reader["dish_type_name"])
                 };
