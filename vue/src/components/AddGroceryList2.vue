@@ -4,47 +4,42 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
         <h1 class="title">Grocery List</h1>
-        <!-- <div id="grocery-search">
+        <div id="grocery-search">
             <form
             id="add-grocery-ingredient"
             v-on:submit.prevent="createGroceryItems()"
             >
+                  <!-- <input
+        type="text"
+        placeholder="Search..."
+        id="groceryIngredientFilter"
+        v-model="filter.groceryIngredient"
+      /> -->
             <input class="add-ingredient-box" type="text" v-model="newItem" placeholder="Add New Ingredient" />
             <br/>
             <button id="button-submit" type="submit" class="button-save">Add</button>
             </form>
-        </div> -->
-        <div class="grocery-list">
-            <table>
-                <thead>
-                <tr>
-                    <th>Ingredient</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="ingredient in this.$store.state.ingredients" v-bind:key="ingredient.id">
-                    </tr>
-                </tbody>
-            </table>
         </div>
+
   </div>
 </template>
 
 <script>
 import GroceryListService from '../services/GroceryListService';
 import "bulma/css/bulma.css";
-
 export default {
-    name: "grocery-list",
-    methods: {
-        getIngredients() {
-            GroceryListService.list().then(response => {
-                this.$store.commit("SET_INGREDIENTS", response.data);
-            });
-        },
-        created() {
-            this.getIngredients();
+    data() {
+        return {
+            newItem: "",
+            groceryItems: [],
         }
+    },
+    methods: {
+        createGroceryItems(){
+      GroceryListService.getIngredients(this.$store.state.user.userId).then((response) =>{
+          this.getIngredients = response.data;
+      });
+  },
     }
 }
 </script>
