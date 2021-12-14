@@ -131,12 +131,12 @@ export default {
   width: 25vw;
   background-color: rgba(255, 255, 255, 0.4);
 }
-/* input {
+input {
   padding: 12px;
   font-size: 1em;
   border-radius: 6px;
   border: 1px solid rgb(129, 129, 129);
-} */
+}
 #button-addpin {
   margin: 5px;
   font-size: 1em;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="grocerylist-display">
-      <h1 id="title1">Grocery List</h1>
+      <h1 id="title">Grocery List</h1>
       <div class="grocery-list">
         <div class="ingredients"
         v-for="ingredient in groceryItems"
