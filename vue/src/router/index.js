@@ -12,6 +12,7 @@ import GroceryList from '../views/GroceryList.vue'
 import Ingredients from '../views/Ingredients.vue'
 import RecipeDetailsView from '../views/RecipeDetailsView.vue'
 import NewRecipeForm from '../components/NewRecipeForm.vue'
+import MealPlanDetailsView from '../views/MealPlanDetailsView.vue'
 
 Vue.use(Router)
 
@@ -103,7 +104,10 @@ const router = new Router({
     {
       path: '/recipe/:id',
       name:'recipe-detail',
-      component: RecipeDetailsView
+      component: RecipeDetailsView,
+      meta:{
+        requiresAuth: true
+      }
     },
     {
       path: '/recipe/create',
@@ -113,6 +117,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: '/mealplan/recipes/:mealPlanId',
+      name: 'meal-plan-details',
+      component: MealPlanDetailsView,
+      meta:{
+        requiresAuth: true
+      }
+    }
   ]
 })
 
