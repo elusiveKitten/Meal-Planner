@@ -112,7 +112,9 @@ export default {
 </script>
 <style>
 .grocery-stores {
-  margin-top: 150px;
+  margin-top: -190px;
+  margin-right: 15px;
+  margin-bottom: 15px;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
@@ -128,13 +130,19 @@ export default {
   background-color: rgba(255, 255, 255, 0.4);
 }
 #button-addpin {
+  height: 30px;
+  border-radius: 5px;
   margin: 5px;
   font-size: 1em;
-  color:  #56aa54;
+  background-color:  #56aa54;
+  color: #edeeeb;
+  border: none;
 }
 #map-header-text {
-  font-size: 1.35em;
+  font-family: 'Sacramento', cursive;
+  font-size: 45px;
   font-weight: bold;
-  color: #286128;
+  color: #ee3f0a;
+  text-shadow: 2px 2px 1px #1a0b06;
 }
 </style>     

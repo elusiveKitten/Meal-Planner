@@ -9,7 +9,7 @@
             </div>
             <div class="form-element">
             <label for="calories">Calories:</label>
-            <input id="calories" placeholder="Type Calories Here" type="text" v-model="recipe.calories" />
+            <input id="calories" placeholder="Type Calories Here" type="text" v-model="recipe.calories" required/>
             </div>
               <div class="form-element">
                 <label for="dish-type">Dish Type:</label>
@@ -37,6 +37,10 @@
                 <label for="instructions">Instructions:</label>
                 <textarea id="instructions" placeholder="Type Recipe Instructions Here" v-model="recipe.instructions" required></textarea>
                 </div>
+            <div class="image-element">
+                <label for="image">Image URL:</label>
+                <input id="image-file" placeholder="Enter Image URL Here" type="url" v-model="recipe.image" required />
+                </div>
                 <input id="create-new-button" type="submit" value="Create New Recipe"  />
                 <input id="cancel" type="button" value="Cancel" v-on:click.prevent="resetForm" />
         </form>
@@ -55,7 +59,8 @@ export default {
               calories: "",
               instructions: "",
               category: "",
-              dishType: ""
+              dishType: "",
+              image: ""
           },
       };
 },
@@ -65,6 +70,7 @@ methods:{
             recipeName: this.recipe.recipeName,
             calories: this.recipe.calories,
             instructions: this.recipe.instructions,
+            image: this.recipe.image,
             category: this.recipe.category,
             dishType: this.recipe.dishType,
             userId: Number(this.$store.state.user.userId),
@@ -97,7 +103,7 @@ methods:{
     margin-left: 25%;
     padding: 20px;
 }
-.form-element [type="text"], #instructions/*changes from box to a line, makes it transparent instead of white input boxes*/
+.form-element [type="text"], #instructions, #image-file/*changes from box to a line, makes it transparent instead of white input boxes*/
 {
     background: transparent;
     border: none;
@@ -108,7 +114,7 @@ methods:{
 #add-recipe-button, #create-new-button, #cancel{/*styling for toggle button, create new and cancel*/
     border: none;
     border-radius: 6px;
-    margin-left: 5%;
+    margin-left: 2%;
     background: #56aa54;
     color:#ffffff;
     font-size: 17px;
@@ -130,7 +136,7 @@ methods:{
     background: #a9b3b4;
     color:#56aa54;
 }
-#calories, #recipe-box, #dish-type, #category, #instructions{
+#calories, #recipe-box, #dish-type, #category, #instructions, #image-file{
     width:70%;
     padding: 5px;
     margin-left: 10px;
