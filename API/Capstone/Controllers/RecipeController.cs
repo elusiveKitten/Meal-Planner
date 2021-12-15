@@ -88,10 +88,10 @@ namespace Capstone.Controllers
             MealRecipe added = recipeDao.AddRecipeToMealPlan(mealPlanRecipe);
             return Created($"mealplan/add/{added.RecipeId}", added);
         }
-        [HttpPut("edit/{recipeId}")]
-        public IActionResult UpdateRecipe(MealRecipe updatedRecipe, int recipeId)
+        [HttpPut("edit/{id}")]
+        public IActionResult UpdateRecipe(MealRecipe updatedRecipe, int id)
         {
-            MealRecipe recipe = recipeDao.GetRecipe(recipeId);
+            MealRecipe recipe = recipeDao.GetRecipe(id);
             if(recipe == null)
             {
                 return NotFound();
