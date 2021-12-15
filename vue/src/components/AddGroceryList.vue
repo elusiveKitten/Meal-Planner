@@ -94,6 +94,9 @@ margin-left: 50px;
   align-items: flex-start;
   flex-direction: column;
 }
+.grocery-list {
+  padding: 10px;
+}
 #info {
   font-weight: bold;
   font-size: 17px;

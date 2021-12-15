@@ -1,13 +1,14 @@
 <template>
   <div>
     <div class="grocery-stores">
-      <h4 id="map-header-text">Find a Grocery Store Nearby</h4>
+      <h4 id="map-header-text">Find a Grocery</h4>
+      <h4 id="map-header-text">Store Nearby</h4>
 
       <label>
         <gmap-autocomplete class="enter-location-box" @place_changed="initMarker"></gmap-autocomplete>
      
       </label>
-      <button id="button-addpin" @click="addLocationMarker" style="float: left;">Add Pin</button>
+      <button id="button-addpin" @click="addLocationMarker">Add Pin</button>
       <br/>
  
     <!-- </div>
@@ -115,11 +116,12 @@ export default {
 </script>
 <style>
 .grocery-stores {
-  margin-top: -500px;
+  margin-top: -42%;
   margin-right: 40px;
+  margin-left: 70%;
   margin-bottom: 15px;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   flex-direction: column;
   justify-content: flex-end;
 }
