@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="grocery-stores">
-      <h4 id="map-header-text">Find a Grocery</h4>
-      <h4 id="map-header-text">Store Nearby</h4>
+      <h4 id="map-header-text">Find a Grocery Store</h4>
 
       <label>
         <gmap-autocomplete class="enter-location-box" @place_changed="initMarker"></gmap-autocomplete>
@@ -116,14 +115,11 @@ export default {
 </script>
 <style>
 .grocery-stores {
-  margin-top: -42%;
-  margin-right: 40px;
-  margin-left: 70%;
-  margin-bottom: 15px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  justify-content: flex-end;
+  margin-top: 20px;
+
 }
 .enter-location-box { /*adjust the size of the input box*/
   width: 25vw;
@@ -145,7 +141,7 @@ export default {
 }
 #map-header-text {
   font-family: 'Sacramento', cursive;
-  font-size: 45px;
+  font-size: 55px;
   font-weight: bold;
   color: #ee3f0a;
   text-shadow: 2px 2px 1px #1a0b06;
