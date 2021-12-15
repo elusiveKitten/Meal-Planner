@@ -41,4 +41,13 @@ namespace Capstone.Models
         public int MealPlanId { get; set; }
         public int RecipeId { get; set; }
     }
+    public class UpdatedRecipe
+    {
+        public string RecipeName { get; set; }
+        public string Calories { get; set; }
+        public string Instructions { get; set; }
+        public string Image { get; set; }
+        public string Category { get; set; }
+        public string DishType { get; set; }
+    }
 }
