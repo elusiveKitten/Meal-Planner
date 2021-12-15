@@ -18,7 +18,7 @@
 
       <img
         id="image2"
-        src="https://admissions.ncsu.edu/wp-content/uploads/sites/19/2020/08/200.jpeg"
+        :src="recipe.image"
       />
     </div>
   </div>
@@ -111,7 +111,7 @@ h2 {
 }
 #image2 {
   height: 200px;
-  width: 200px;
+
   grid-area: img;
 
   border-radius: 5px;

@@ -49,7 +49,7 @@
               <a
                 class="navbar-item"
               >
-                <router-link v-bind:to="{ path: '/recipe/user/userId' }"
+                <router-link v-bind:to="{ path: '/recipe/user/userId', params: {userId:this.$store.state.user.userId} }"
                   >My Recipes</router-link
                 >
               </a>

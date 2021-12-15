@@ -8,6 +8,9 @@ export default{
     },
     getMealPlanRecipes(mealPlanId){
         return http.get(`/mealplan/recipes/${mealPlanId}`)
+    },
+    createMealPlan(newMealPlan){
+        return http.post(`/mealplan/create`, newMealPlan)
     }
    
 }
