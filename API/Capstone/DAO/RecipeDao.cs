@@ -24,7 +24,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, category_name, dish_type_name  FROM recipes " +
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, recipe_image, category_name, dish_type_name  FROM recipes " +
                         "JOIN recipe_category ON recipes.recipe_id = recipe_category.recipe_id " +
                         "JOIN recipe_dish_type ON recipes.recipe_id = recipe_dish_type.recipe_id " +
                         "JOIN category ON recipe_category.category_id = category.category_id " +
@@ -37,7 +37,7 @@ namespace Capstone.DAO
                     while (reader.Read())
                     {
                         MealRecipe mealRecipe = GetMealRecipeFromReader(reader);
-                        if(mealRecipe != null)
+                        if (mealRecipe != null)
                         {
                             userRecipes.Add(mealRecipe);
                         }
@@ -60,7 +60,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, category_name, dish_type_name  FROM recipes " +
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, recipe_image, category_name, dish_type_name FROM recipes " +
                         "JOIN recipe_category on recipes.recipe_id = recipe_category.recipe_id " +
                         "JOIN recipe_dish_type on recipes.recipe_id = recipe_dish_type.recipe_id " +
                         "JOIN category on recipe_category.category_id = category.category_id " +
@@ -76,7 +76,7 @@ namespace Capstone.DAO
                 }
                 return mealRecipe;
             }
-            catch(SqlException)
+            catch (SqlException)
             {
                 throw new Exception();
             }
@@ -119,7 +119,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, category_name, dish_type_name  FROM recipes " +
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, recipe_image, category_name, dish_type_name  FROM recipes " +
                         "JOIN recipe_category on recipes.recipe_id = recipe_category.recipe_id " +
                         "JOIN recipe_dish_type on recipes.recipe_id = recipe_dish_type.recipe_id " +
                         "JOIN category on recipe_category.category_id = category.category_id " +
@@ -151,7 +151,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, category_name, dish_type_name FROM recipes " +
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, recipe_image, category_name, dish_type_name FROM recipes " +
                         "JOIN recipe_category on recipes.recipe_id = recipe_category.recipe_id " +
                         "JOIN recipe_dish_type on recipes.recipe_id = recipe_dish_type.recipe_id " +
                         "JOIN category on recipe_category.category_id = category.category_id " +
@@ -180,9 +180,9 @@ namespace Capstone.DAO
             try
             {
                 List<MealRecipe> mealRecipes = GetRecipesByUser(newRecipe.UserId);
-                foreach(MealRecipe mealRecipe in mealRecipes)
+                foreach (MealRecipe mealRecipe in mealRecipes)
                 {
-                    if(mealRecipe.RecipeId == newRecipe.RecipeId)
+                    if (mealRecipe.RecipeId == newRecipe.RecipeId)
                     {
                         return ConfirmUserRecipe(newRecipe.UserId, newRecipe.RecipeId);
                     }
@@ -209,10 +209,10 @@ namespace Capstone.DAO
             };
             try
             {
-                using(SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO recipes(recipe_name, calories, instructions) VALUES('"+newRecipe.RecipeName+"','"+newRecipe.Calories+"','"+newRecipe.Instructions+"'); SELECT @@IDENTITY;", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO recipes(recipe_name, calories, instructions, recipe_image) VALUES('" + newRecipe.RecipeName + "','" + newRecipe.Calories + "','" + newRecipe.Instructions + "', '"+newRecipe.Image+"'); SELECT @@IDENTITY;", conn);
                     newUserRecipe.RecipeId = Convert.ToInt32(cmd.ExecuteScalar());
                     conn.Close();
                 }
@@ -223,14 +223,14 @@ namespace Capstone.DAO
                     cmd.ExecuteNonQuery();
                     conn.Close();
                 }
-                using(SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO recipe_category(recipe_id, category_id) VALUES( " + newUserRecipe.RecipeId + ", (SELECT category_id FROM category WHERE category_name = '" + newRecipe.Category + "'))", conn);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                 }
-                using(SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO recipe_dish_type(dish_type_id, recipe_id) VALUES((SELECT dish_type_id FROM dish_type WHERE dish_type_name = '" + newRecipe.DishType + "'), " + newUserRecipe.RecipeId + ")", conn);
@@ -239,7 +239,7 @@ namespace Capstone.DAO
                 }
                 return ConfirmUserRecipe(newUserRecipe.UserId, newUserRecipe.RecipeId);
             }
-            catch(SqlException)
+            catch (SqlException)
             {
                 throw new Exception("Failed to create new recipe");
             }
@@ -253,7 +253,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, category_name, dish_type_name FROM recipes " +
+                    SqlCommand cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name, calories, instructions, recipe_image, category_name, dish_type_name FROM recipes " +
                         "JOIN recipe_category on recipes.recipe_id = recipe_category.recipe_id " +
                         "JOIN recipe_dish_type on recipes.recipe_id = recipe_dish_type.recipe_id " +
                         "JOIN category on recipe_category.category_id = category.category_id " +
@@ -296,6 +296,52 @@ namespace Capstone.DAO
                 throw new Exception();
             }
         }
+        public bool DeleteRecipeFromMealPlan(AddedMealRecipe delete)
+        {
+            List<SimplifiedRecipe> newMealPlan = new List<SimplifiedRecipe>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("DELETE FROM meal_plan_recipe WHERE meal_plan_id = " + delete.MealPlanId + " AND recipe_id = " + delete.RecipeId + "", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    conn.Open();
+                    cmd = new SqlCommand("SELECT recipes.recipe_id, recipe_name  FROM recipes " +
+                        "JOIN meal_plan_recipe ON recipes.recipe_id = meal_plan_recipe.recipe_id " +
+                        "JOIN meal_plan ON meal_plan_recipe.meal_plan_id = meal_plan.meal_plan_id " +
+                        "WHERE meal_plan_recipe.meal_plan_id = " + delete.MealPlanId + "", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        SimplifiedRecipe recipe = new SimplifiedRecipe()
+                        {
+                            RecipeId = Convert.ToInt32(reader["recipe_id"]),
+                            RecipeName = Convert.ToString(reader["recipe_name"])
+                        };
+                        if (recipe != null)
+                        {
+                            newMealPlan.Add(recipe);
+                        }
+                    }
+                    foreach(SimplifiedRecipe recipe in newMealPlan)
+                    {
+                        if(recipe.RecipeId == delete.RecipeId)
+                        {
+                            return false;
+                        }
+                    }
+                    reader.Close();
+                    return true;  
+                }
+            }
+            catch (SqlException)
+            {
+                throw new Exception();
+            }
+        }
         private MealRecipe GetMealRecipeFromReader(SqlDataReader reader)
         {
             try
@@ -306,6 +352,7 @@ namespace Capstone.DAO
                     RecipeName = Convert.ToString(reader["recipe_name"]),
                     Calories = Convert.ToString(reader["calories"]),
                     Instructions = Convert.ToString(reader["instructions"]),
+                    Image = Convert.ToString(reader["recipe_image"]),
                     Category = Convert.ToString(reader["category_name"]),
                     DishType = Convert.ToString(reader["dish_type_name"])
                 };

@@ -66,8 +66,8 @@ const router = new Router({
       name: 'grocery-list',
       component: GroceryList,
       meta:{
-        requiresAuth: true
-      }
+         requiresAuth: true
+       }
     },
     {
       path: '/ingredients',

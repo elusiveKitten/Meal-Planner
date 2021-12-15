@@ -16,16 +16,30 @@
     <GmapMap
         :zoom="11"    
         :center="center"
+        :options="mapOptions"
+        @click="handleMapClick"
         style="width:25vw; height: 35vh"
+
       >
       <GmapMarker
         :key="index"
         title: p.name
-        v-for="(m, index) in locationMarkers"
-        :position="m.position"
+        v-for="(marker, index) in locationMarkers"
+        :position="marker.position"
         :clickable="true"
-        @click="center=m.position"
+        :draggable="true"
+        @click="center=marker.position"
       ></GmapMarker>
+      <!-- Info window -->
+    <GmapInfoWindow 
+      :options="infoOptions" 
+      :position="infoWindowPos" 
+      :opened="infoWinOpen" 
+      @closeclick="infoWinOpen=false"
+    >
+      <!-- Info card -->
+      <GmapInfoCard :marker="infoContent"></GmapInfoCard>
+    </GmapInfoWindow>
     </GmapMap>
     </div>
   </div>
@@ -70,7 +84,20 @@ export default {
       infowindow.open(map, this);
     });
     },
-    
+          toggleInfoWindow (marker, index) {
+        this.infoContent = marker
+        this.infoWindowPos = marker.position
+
+        //check if its the same marker that was selected if yes toggle
+        if (this.currentMindex === index) {
+          this.infoWinOpen = !this.infoWinOpen
+        }
+        // if different marker set infowindow to open and reset current marker index
+        else {
+          this.infoWinOpen = true
+          this.currentMindex = index
+        }
+      },
 
     locateGeoLocation: function() {
       navigator.geolocation.getCurrentPosition(res => {
@@ -91,10 +118,6 @@ export default {
   flex-direction: column;
   justify-content: flex-end;
 }
-.g-map {
-    display: flex;
-    align-items: center;
-}
 .enter-location-box { /*adjust the size of the input box*/
   width: 25vw;
   height: 4vh;
@@ -104,12 +127,6 @@ export default {
   width: 25vw;
   background-color: rgba(255, 255, 255, 0.4);
 }
-/* input {
-  padding: 12px;
-  font-size: 1em;
-  border-radius: 6px;
-  border: 1px solid rgb(129, 129, 129);
-} */
 #button-addpin {
   margin: 5px;
   font-size: 1em;
