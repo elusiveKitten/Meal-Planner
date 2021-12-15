@@ -9,28 +9,11 @@
           {{ingredient}}
           </li>
           </ul>
-      </div></div>
-
-
-
-
-
-        <!--<div id="groceries"
-        v-for="ingredient in groceryItems"
-        v-bind:key="ingredient">
-        <div id="info">
-          <h1>{{ingredient}}</h1>
-        </div>
-        </div>
       </div>
-    </div>-->
-     <!-- <ul id="example">
-       <li type="checkbox v-for="ingredient in groceryItems"
-       v-bind:key="ingredient">
-       {{ingredient}}
-       </li>
-     </ul>    -->
-
+      <div id="print-grocery-list">
+	<button id="print-grocery-list-button" @click="printWindow()">Print</button>
+</div>
+      </div>
   </div>
 </template>
 
@@ -47,6 +30,11 @@ export default {
               ingredient: "",
             }
         }
+    },
+    methods: {
+      printWindow: function () {
+        window.print();
+      }
     },
     created() {
       groceryListService.getIngredients(this.$store.state.user.userId).then((response) => {
@@ -121,5 +109,16 @@ margin-left: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   font-weight: bold;
+}
+#print-grocery-list-button {
+  height: 30px;
+  width: 60px;
+  border-radius: 5px;
+  margin-left: 200px;
+  margin-top: 5px;
+  font-size: 1em;
+  background-color:  #56aa54;
+  color: #edeeeb;
+  border: none;
 }
 </style>

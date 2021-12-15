@@ -145,4 +145,10 @@ export default {
   color: #ee3f0a;
   text-shadow: 2px 2px 1px #1a0b06;
 }
+input {
+  padding: 12px;
+  font-size: .8em;
+  border-radius: 6px;
+  border: 1px solid rgb(129, 129, 129);
+} 
 </style>     
