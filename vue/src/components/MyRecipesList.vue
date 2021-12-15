@@ -12,19 +12,28 @@
         v-bind:key="recipe.userId">
         <div id="info">
         <h2 id="recipe-name">{{recipe.recipeName}}</h2>
+        <div id="mealplan-selection">
+            <select id="mealplan-dropdown" v-model="recipeAndPlan.mealPlanId" required>
+                <option v-for="mealPlan in mealPlans" v-bind:value="mealPlan.mealPlanId" v-bind:key="mealPlan.mealPlanId">
+                    {{mealPlan.mealPlanName}}</option>
+            </select>
+        </div>
+        <button v-on:click="recipeAndPlan.recipeId=recipe.recipeId; addRecipe(recipeAndPlan)">Add Recipe to Selected Meal Plan</button>
+
+
         <router-link id="link-to-detail" :to="{ name: 'recipe-detail', params: { id: recipe.recipeId } }">Recipe Details</router-link>
          <h3>{{ recipe.category }}</h3>
          </div>
         <img id="image" v-bind:src="recipe.image" />
         </div>
-    
         </div>
         </div>
 </template>
 <script>
 import myRecipeService from '../services/MyRecipeService';
 import NewRecipeForm from '../components/NewRecipeForm.vue';
-import "bulma/css/bulma.css";
+import mealPlanService from '../services/MealPlanService';
+import recipeService from '../services/RecipeService';
 
 export default {
     components:{
@@ -33,6 +42,11 @@ export default {
     },
   data(){
       return{
+          mealPlans: [],
+          recipeAndPlan:{
+              recipeId: 0,
+              mealPlanId: 0
+          },
           userRecipes: [],
           filter:{
               recipeName: "",
@@ -45,6 +59,10 @@ export default {
       myRecipeService.getRecipes(this.$store.state.user.userId).then((response) =>{
           this.userRecipes = response.data;
       });
+         mealPlanService.getMealPlans(this.$store.state.user.userId).then((response) =>{
+              this.mealPlans = response.data;
+         });
+  
   },
   computed:{
       filteredList(){
@@ -67,6 +85,17 @@ export default {
       }
       return filteredRecipes;
       }
+  },
+  methods:{
+      addRecipe(recipeAndPlan){
+          
+          recipeService.addRecipeToMealPlan(recipeAndPlan).then((response) =>{
+              if(response.status === 201){
+                  console.log("Recipe successfully added to Meal Plan");
+              }
+          })
+      },
+
   }
   
   

@@ -58,9 +58,9 @@ export default {
               recipeName: "",
               calories: "",
               instructions: "",
+              image: "",
               category: "",
-              dishType: "",
-              image: ""
+              dishType: ""
           },
       };
 },
