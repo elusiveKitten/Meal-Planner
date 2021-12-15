@@ -66,23 +66,14 @@ export default {
   color: white;
   font-weight: normal;
   height:fit-content;
-  width:20%;
+  width:27%;
   align-items: stretch;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   margin-top: 15px;
-  margin-left: 15px;
+  margin-left: 30px;
 } 
-/* .groceries {
-  border-radius: 6px;
-  padding: 1rem;
-  margin: 3px;
-  width: 30%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-weight: bold;
-} */
 .title{/*"Grocery List"*/
 font-family: 'Sacramento', cursive;
 font-size: 55px;
@@ -90,7 +81,7 @@ color:#ee3f0a;
 text-shadow: 2px 2px 1px #1a0b06;
 font-weight: bold;
 margin-top: 20px;
-margin-left: 20px;
+margin-left: 50px;
 }
 .grocerylist-display {
   display: flex;
@@ -114,7 +105,7 @@ margin-left: 20px;
   height: 30px;
   width: 60px;
   border-radius: 5px;
-  margin-left: 200px;
+  margin-left: 160px;
   margin-top: 5px;
   font-size: 1em;
   background-color:  #56aa54;
