@@ -1,19 +1,23 @@
 <template>
     <div id="mealplan-container">
         <nav-bar></nav-bar>
-        <h1>My Meal Plans</h1>
+        <meal-plans-list />
         
     </div>
 </template>
 <script>
+import MealPlansList from '../components/MealPlansList.vue';
+
 import NavBar from '../components/NavBar.vue';
 export default {
   name: "my-meal-plans",
   components: {
-    NavBar
+    NavBar,
+    MealPlansList
   }
 };
 </script>
+    MealPlansList
 <style>
 #mealplan-container{
   height: 100vh;

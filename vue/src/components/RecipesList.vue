@@ -31,7 +31,7 @@
           >
           <h3>{{ recipe.category }}</h3>
         </div>
-        <img id="image" v-bind:src="'https://via.placeholder.com/150'" />
+        <img id="image" v-bind:src="recipe.image" />
       </div>
     </div>
   </div>

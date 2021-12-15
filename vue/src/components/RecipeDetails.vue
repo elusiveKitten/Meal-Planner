@@ -7,23 +7,25 @@
         <p>Dish Type: {{ recipe.dishType }}</p>
         <p>Calories: {{ recipe.calories }}</p>
         <p>Category: {{ recipe.category }}</p>
-      </div>
-      <div id="instructions">
         <p>Instructions:</p>
         <p>{{ recipe.instructions }}</p>
-      </div>
-      <img
-        id="image2"
-        src="https://admissions.ncsu.edu/wp-content/uploads/sites/19/2020/08/200.jpeg"
-      />
-      <button @click.prevent="addToMyRecipes">Add To My Recipes</button>
+        <button class="button is-primary" @click.prevent="addToMyRecipes">Add To My Recipes</button>
       <h4 v-show="success">Successfully added to My Recipes</h4>
       <h4 v-show="error">There was an error adding the recipe to My Recipes</h4>
+      </div>
+      
+
+
+      <img
+        id="image2"
+        :src="recipe.image"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import "bulma/css/bulma.css";
 import recipeService from "../services/RecipeService";
 export default {
   data() {
@@ -85,7 +87,6 @@ export default {
 h2 {
   font-size: 65px;
   width: 40%;
-  margin: 0;
   padding: 0 0 20px;
   text-align: center;
   font-family: "Sacramento", cursive;
@@ -95,40 +96,39 @@ h2 {
 }
 #card-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 #recipe-card {
   border-radius: 6px;
   padding: 1rem;
-  margin: 10px;
   width: 35%;
   background-color:  rgba(0,0,0,0.5);
   color: white;
   font-weight: bold;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "description img"
-    "instructions instructions";
+  
+  
 }
 #image2 {
   height: 200px;
-  width: 200px;
+
   grid-area: img;
-  margin-left: 120px;
+
   border-radius: 5px;
 }
 #description {
+  grid-area: description;
   display: flex;
   flex-direction: column;
-  margin-right: 50px;
-}
-#instructions {
-  grid-area: instructions;
+  margin-bottom:5px;
+  
 }
 p {
-  width: 90%;
+  width: 100%;
+  margin: 5px;
+}
+button{
+  margin-bottom: 10px;
+  width: fit-content;
 }
 </style>
