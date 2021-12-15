@@ -1,9 +1,14 @@
 <template>
     <div id="grocery-container">
+      <div id="nav">
         <nav-bar></nav-bar>
+      </div>
+      <div id="glist">
         <add-grocery-list />
+      </div>
+      <div id="googmap">
         <google-maps />
-    
+      </div>
     </div>
 </template>
 <script>
@@ -23,7 +28,7 @@ export default {
 
 <style>
 #grocery-container{
-  height: 100vh;
+  /* height: 100%; */
   background-image: url("https://cdn.rcimg.net/meitanteikudo/a5d5b507/5f28b9be7d71464801b30d31f9ba12ac.jpeg");
   background-size: cover;
   }

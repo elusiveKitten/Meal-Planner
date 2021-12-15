@@ -118,10 +118,6 @@ export default {
   flex-direction: column;
   justify-content: flex-end;
 }
-.g-map {
-    display: flex;
-    align-items: center;
-}
 .enter-location-box { /*adjust the size of the input box*/
   width: 25vw;
   height: 4vh;
@@ -130,12 +126,6 @@ export default {
 #locationFilter {
   width: 25vw;
   background-color: rgba(255, 255, 255, 0.4);
-}
-input {
-  padding: 12px;
-  font-size: 1em;
-  border-radius: 6px;
-  border: 1px solid rgb(129, 129, 129);
 }
 #button-addpin {
   margin: 5px;
