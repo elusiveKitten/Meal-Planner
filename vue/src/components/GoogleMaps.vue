@@ -77,6 +77,7 @@ export default {
         this.locationMarkers.push({ position: marker });
         this.locPlaces.push(this.existingPlace);
         this.center = marker;
+        this.map.setZoom(5);
         this.existingPlace = null;
       };
           google.maps.event.addListener(marker, 'click', function() {
@@ -105,6 +106,8 @@ export default {
           lat: res.coords.latitude,
           lng: res.coords.longitude
         };
+        map.setZoom(5);
+        map.panTo(marker.position);
       });
     }
   }
@@ -112,8 +115,8 @@ export default {
 </script>
 <style>
 .grocery-stores {
-  margin-top: -190px;
-  margin-right: 15px;
+  margin-top: -500px;
+  margin-right: 40px;
   margin-bottom: 15px;
   display: flex;
   align-items: flex-end;
