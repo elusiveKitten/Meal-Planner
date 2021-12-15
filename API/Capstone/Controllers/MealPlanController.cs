@@ -1,5 +1,6 @@
 ﻿using Capstone.DAO;
 using Capstone.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ namespace Capstone.Controllers
 {
     [Route("mealplan/")]
     [ApiController]
+    [Authorize]
     public class MealPlanController : ControllerBase
     {
         private readonly IMealPlanDao mealPlanDao;

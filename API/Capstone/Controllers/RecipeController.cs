@@ -1,5 +1,6 @@
 ﻿using Capstone.DAO;
 using Capstone.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ namespace Capstone.Controllers
 {
     [Route("recipe/")]
     [ApiController]
+    [Authorize]
     public class RecipeController : ControllerBase
     {
         private readonly IRecipeDao recipeDao;
