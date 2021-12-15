@@ -14,5 +14,8 @@ export default{
     },
     createRecipe(newRecipe){
         return http.post(`/recipe/create`, newRecipe);
+    },
+    addRecipeToMealPlan(recipeAndPlan){
+        return http.post('recipe/mealplan/add', recipeAndPlan)
     }
 }
