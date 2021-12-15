@@ -7,6 +7,7 @@
         <li v-for="ingredient in groceryItems" v-bind:key="ingredient">
           <input type="checkbox">
           {{ingredient}}
+                  <span class="delete" v-on:click="deleteIngredient(ingredient)">×</span>
           </li>
           </ul>
       </div>
@@ -32,6 +33,11 @@ export default {
         }
     },
     methods: {
+      deleteIngredient(ingredientToDelete) {
+      this.groceryItems = this.groceryItems.filter((ingredient) => {
+        return ingredient !== ingredientToDelete;
+      });
+    },
       printWindow: function () {
         window.print();
       }

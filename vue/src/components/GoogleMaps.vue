@@ -7,7 +7,7 @@
         <gmap-autocomplete class="enter-location-box" @place_changed="initMarker"></gmap-autocomplete>
      
       </label>
-      <button id="button-addpin" @click="addLocationMarker">Add Pin</button>
+      <button id="button-addpin" @click="addLocationMarker" style="float: left;">Add Pin</button>
       <br/>
  
     <!-- </div>
