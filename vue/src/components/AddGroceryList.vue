@@ -3,7 +3,19 @@
     <div class="grocerylist-display">
       <h1 id="title">Grocery List</h1>
       <div class="grocery-list">
-        <div id="groceries"
+        <ul>
+        <li v-for="ingredient in groceryItems" v-bind:key="ingredient">
+          <input type="checkbox">
+          {{ingredient}}
+          </li>
+          </ul>
+      </div></div>
+
+
+
+
+
+        <!--<div id="groceries"
         v-for="ingredient in groceryItems"
         v-bind:key="ingredient">
         <div id="info">
@@ -11,7 +23,7 @@
         </div>
         </div>
       </div>
-    </div>
+    </div>-->
      <!-- <ul id="example">
        <li type="checkbox v-for="ingredient in groceryItems"
        v-bind:key="ingredient">
@@ -58,15 +70,22 @@ export default {
 </script>
 
 <style>
-/* .grocery-list {
-  width: 45%;
+ .grocery-list {/*checkbox list of items*/
+  border-radius: 6px;
+  padding: 20px;
+  margin: 3px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-weight: normal;
+  height:fit-content;
+  width:20%;
   align-items: stretch;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  margin-top: 50px;
-  
-} */
+  margin-top: 15px;
+  margin-left: 15px;
+} 
 /* .groceries {
   border-radius: 6px;
   padding: 1rem;
@@ -102,14 +121,5 @@ margin-left: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   font-weight: bold;
-}
-.grocery-list {
-  width: 45%;
-  align-items: stretch;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  margin-top: 15px;
-  margin-left: 10px;
 }
 </style>
