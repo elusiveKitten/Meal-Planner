@@ -2,11 +2,11 @@
   <div id="meal-plan-card-container">
     <h1 id="meal-plan-title">Meal Plan Details</h1>
     <div id="delete-form">
-      <select id="recipe-dropdown" v-model="mealPlan.recipeId">
+      <select id="recipe-dropdown" v-model="mealPlanRecipe.recipeId">
         <option v-for="recipe in recipes" :value="recipe.recipeId" :key="recipe.recipeId">
           {{recipe.recipeName}}</option>
       </select>
-      <button id="delete-button" class="button is-danger" v-on:click="deleteRecipe(mealPlan)">⛔ Remove Recipe From Meal Plan</button>
+      <button id="delete-button" class="button is-danger" v-on:click="deleteRecipe(mealPlanRecipe)">⛔ Remove Recipe From Meal Plan</button>
     </div>
     <div class="meal-plan-recipes">
       <div
@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       recipes: [],
-      mealPlan:{
+      mealPlanRecipe:{
         mealPlanId: Number(this.$route.params.mealPlanId),
         recipeId: ""
       }
@@ -49,10 +49,10 @@ export default {
       });
   },
   methods:{
-    deleteRecipe(mealPlan){
+    deleteRecipe(mealPlanRecipe){
       
       if(confirm("Are you sure you want to delete this recipe from the meal plan?")){
-        recipeService.deleteRecipeFromMealPlan(mealPlan).then(()=>{
+        recipeService.deleteRecipeFromMealPlan(mealPlanRecipe).then(()=>{
           console.log("deleted recipe from mealplan")
         })
       }
