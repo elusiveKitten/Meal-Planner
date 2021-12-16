@@ -125,9 +125,7 @@ input {
   border: 1px solid rgb(129, 129, 129);
 }
 #link-to-detail {
-  font-weight: bold;
-  color: #56aa54;
-  font-size: 18px;
+  font-size: 16px;
 }
 #recipe-name {
   font-weight: bold;

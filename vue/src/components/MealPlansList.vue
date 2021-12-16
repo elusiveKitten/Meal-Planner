@@ -9,14 +9,14 @@
     <h1 id="meal-plan-title">My Meal Plans</h1>
     <div id="form-container">
       <form>
-        <label id="label-title" for="mealPlan">Create a New Meal Plan</label>
+        <label id="new-label-title" for="mealPlan">Create a New Meal Plan:</label>
         <input
           id="ingredientInput"
           type="text"
           v-model="mealPlan.mealPlanName"
           autocomplete="off"
         />
-        <button id="saveBtn" v-on:click.prevent="submitForm">Save</button>
+        <button id="saveBtn" v-on:click="submitForm">Save</button>
       </form>
     </div>
     
@@ -107,7 +107,7 @@ export default {
 #meal-plan-name {
   font-family: "Sacramento", cursive;
   font-size: 55px;
-  color: #6bab7f;
+  color: #56aa54;
   text-shadow: 2px 2px 1px #1a0b06;
   font-weight: bold;
 }
@@ -116,5 +116,20 @@ export default {
   font-weight: bold;
   font-size: 24px;
   text-shadow: 1px 1px 5px #ee3f0a;
+}
+#saveBtn{
+  height:fit-content;
+  width: fit-content;
+  background-color: #56aa54;
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+#new-label-title{
+  font-family: "Sacramento", cursive;
+  text-shadow: 2px 2px 1px #1a0b06;
+  font-size: 40px;
+  font-weight: bold;
+  color: #56aa54;
 }
 </style>
