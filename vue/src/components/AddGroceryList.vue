@@ -5,7 +5,7 @@
       <form v-on:submit.prevent="createGroceryItem">
       <input id="new-ingred-box" type="text" v-model="newItem" placeholder="Add New Item" />
       <br/>
-      <button id="button-save" type="submit" class="btn save">Save</button>
+      <button id="button-save" type="submit" class="btn save">Add Item</button>
     </form>
       <div class="grocery-list">
         <ul>
