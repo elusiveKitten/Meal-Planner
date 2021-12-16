@@ -18,8 +18,8 @@
         :center="center"
         :options="mapOptions"
         @click="handleMapClick"
-        style="width:25vw; height: 35vh"
-
+        style="width:35vw; height: 50vh"
+        :types= "supermarket"
       >
       <GmapMarker
         :key="index"
@@ -131,7 +131,8 @@ export default {
   background-color: rgba(255, 255, 255, 0.4);
 }
 #button-addpin {
-  height: 30px;
+  height: 3vh;
+  width: 5vw;
   border-radius: 5px;
   margin: 5px;
   font-size: 1em;

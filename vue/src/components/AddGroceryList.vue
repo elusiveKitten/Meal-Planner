@@ -2,6 +2,11 @@
   <div>
     <div class="grocerylist-display">
       <h1 id="title">Grocery List</h1>
+      <form v-on:submit.prevent="createGroceryItem">
+      <input id="new-ingred-box" type="text" v-model="newItem" placeholder="Add New Item" />
+      <br/>
+      <button id="button-save" type="submit" class="btn save">Save</button>
+    </form>
       <div class="grocery-list">
         <ul>
         <li v-for="ingredient in groceryItems" v-bind:key="ingredient">
@@ -27,9 +32,7 @@ export default {
         return {
             newItem: "",
             groceryItems: [],
-            filter: {
-              ingredient: "",
-            }
+            
         }
     },
     methods: {
@@ -37,6 +40,10 @@ export default {
       this.groceryItems = this.groceryItems.filter((ingredient) => {
         return ingredient !== ingredientToDelete;
       });
+    },
+    createGroceryItem() {
+      this.groceryItems.unshift(this.newItem);
+      this.newItem = "";
     },
       printWindow: function () {
         window.print();
@@ -107,13 +114,30 @@ export default {
   font-weight: bold;
 } */
 #print-grocery-list-button {
-  height: 30px;
-  width: 60px;
+  height: 3vh;
+  width: 5vw;
   border-radius: 5px;
   margin-top: 5px;
   font-size: 1em;
   background-color:  #56aa54;
   color: #edeeeb;
   border: none;
+}
+#new-ingred-box { /*adjust the size of the input box*/
+  width: 25vw;
+  height: 4vh;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 5px;
+}
+#button-save {
+  height: 3vh;
+  width: 5vw;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 1em;
+  background-color:  #56aa54;
+  color: #edeeeb;
+  border: none;
+  margin-bottom: 10px;
 }
 </style>

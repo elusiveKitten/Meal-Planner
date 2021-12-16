@@ -214,19 +214,17 @@ VALUES ('Pecan Roll-Ups', '51', 'In a large bowl, beat butter, cream cheese and 
 --add recipe categories
 INSERT INTO recipe_category(recipe_id, category_id)
 VALUES
-	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Simple Mac n Cheese'),(SELECT category_id FROM category WHERE category_name = 'Easy')),
-	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Grilled Tomatoes'), (SELECT category_id FROM category WHERE category_name = 'Easy')),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Easy Cheesy Ground Beef Enchiladas'),(SELECT category_id FROM category WHERE category_name = 'Mexican')),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Lasagna'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
-	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Grilled Tomatoes'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
-	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Simple Mac n Cheese'),(SELECT category_id FROM category WHERE category_name = 'Easy')),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Garlic Parmesan Roasted Cauliflower'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Balsamic Goat Cheese Stuffed Chicken Breasts'),(SELECT category_id FROM category WHERE category_name = 'Low Carb')),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Simple Roasted Butternut Squash'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Buttery Garlic Green Beans'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pesto Chicken'),(SELECT category_id FROM category WHERE category_name = 'Low Carb')),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Bacon Chicken'),(SELECT category_id FROM category WHERE category_name = 'Keto')),
-	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Balsamic Goat Cheese Stuffed Chicken Breasts'),(SELECT category_id FROM category WHERE category_name = 'Low Carb')),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Quinoa with Peas and Onion'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Grilled Tomatoes'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Simple Mac n Cheese'),(SELECT category_id FROM category WHERE category_name = 'Easy')),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Spinach Mushroom Scrambled Eggs'),(SELECT category_id FROM category WHERE category_name = 'Easy')),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Pesto Pasta and Potatoes'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
 	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Spinach Parm Casserole'),(SELECT category_id FROM category WHERE category_name = 'Vegetarian')),
@@ -287,6 +285,7 @@ VALUES
 	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Dessert'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'No-Bake Chocolate Hazelnut Thumbprints')),
 	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Dessert'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Mini Blueberry Tarts')),
 	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Dessert'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Quick Mango Sorbet')),
+	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Dessert'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Cake & Berry Campfire Cobbler')),
 	((SELECT dish_type_id FROM dish_type WHERE dish_type_name = 'Dessert'),(SELECT recipe_id FROM recipes WHERE recipe_name = 'Pecan Roll-Ups'));
 
 
