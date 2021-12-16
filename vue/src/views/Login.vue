@@ -81,6 +81,7 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  overflow: scroll;
 }
 .background-img:after{
   background-image: url('https://cdn.discordapp.com/attachments/916348750774013963/917534560487637042/background.jpg');

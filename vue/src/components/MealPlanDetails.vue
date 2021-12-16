@@ -103,4 +103,11 @@ export default {
 #delete-button{
   margin-left: 12px;
 }
+#link-to-detail2{
+  color: white;
+  font-size: 16px;
+}
+#link-to-detail2:hover{
+  color: #56aa54;
+}
 </style>

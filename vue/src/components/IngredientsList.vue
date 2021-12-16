@@ -162,7 +162,7 @@ export default {
 #label-title{
   font-family:"Sacramento", cursive;
   font-size: 35px;
-  color: #6BAB7F;
+  color: #56aa54;
   font-weight:bold;
   text-shadow: 1px 1px 1px #1a0b06;
   margin-right: 12px

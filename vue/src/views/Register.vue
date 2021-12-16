@@ -113,10 +113,11 @@ export default {
 
 <style scoped>
 .background-img{
-    background-image:url('https://cdn.discordapp.com/attachments/916348750774013963/917534560487637042/background.jpg');
+  background-image:url('https://cdn.discordapp.com/attachments/916348750774013963/917534560487637042/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  overflow: scroll;
 }
 body{
   margin: 0;
