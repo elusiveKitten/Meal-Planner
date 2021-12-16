@@ -14,5 +14,8 @@ export default{
     },
     createRecipe(newRecipe){
         return http.post(`/recipe/create`, newRecipe);
+    },
+    deleteRecipeFromMealPlan(recipeToDelete){
+        return http.delete(`/recipe/mealplan/delete`,recipeToDelete)
     }
 }
