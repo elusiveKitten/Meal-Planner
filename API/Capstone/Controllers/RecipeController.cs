@@ -1,5 +1,6 @@
 ﻿using Capstone.DAO;
 using Capstone.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ namespace Capstone.Controllers
 {
     [Route("recipe/")]
     [ApiController]
+    [Authorize]
     public class RecipeController : ControllerBase
     {
         private readonly IRecipeDao recipeDao;
@@ -87,6 +89,21 @@ namespace Capstone.Controllers
         {
             MealRecipe added = recipeDao.AddRecipeToMealPlan(mealPlanRecipe);
             return Created($"mealplan/add/{added.RecipeId}", added);
+        }
+        [HttpPut("edit/{id}")]
+        public IActionResult UpdateRecipe(MealRecipe updatedRecipe, int id)
+        {
+            MealRecipe recipe = recipeDao.GetRecipe(id);
+            if(recipe == null)
+            {
+                return NotFound();
+            }
+            if (updatedRecipe.RecipeId == recipe.RecipeId)
+            {
+                MealRecipe finalRecipe = recipeDao.UpdateRecipe(updatedRecipe);
+                return Ok(finalRecipe);
+            }
+            return StatusCode(403);
         }
         [HttpDelete("mealplan/delete")]
         public IActionResult DeleteRecipeFromMealPlan(AddedMealRecipe delete)

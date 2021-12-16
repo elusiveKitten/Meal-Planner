@@ -2,35 +2,24 @@
   <div>
     <div class="grocerylist-display">
       <h1 id="title">Grocery List</h1>
+      <form v-on:submit.prevent="createGroceryItem">
+      <input id="new-ingred-box" type="text" v-model="newItem" placeholder="Add New Item" />
+      <br/>
+      <button id="button-save" type="submit" class="btn save">Add Item</button>
+    </form>
       <div class="grocery-list">
         <ul>
         <li v-for="ingredient in groceryItems" v-bind:key="ingredient">
           <input type="checkbox">
           {{ingredient}}
+                  <span class="delete" v-on:click="deleteIngredient(ingredient)">×</span>
           </li>
           </ul>
-      </div></div>
-
-
-
-
-
-        <!--<div id="groceries"
-        v-for="ingredient in groceryItems"
-        v-bind:key="ingredient">
-        <div id="info">
-          <h1>{{ingredient}}</h1>
-        </div>
-        </div>
       </div>
-    </div>-->
-     <!-- <ul id="example">
-       <li type="checkbox v-for="ingredient in groceryItems"
-       v-bind:key="ingredient">
-       {{ingredient}}
-       </li>
-     </ul>    -->
-
+      <div id="print-grocery-list">
+	<button id="print-grocery-list-button" @click="printWindow()">Print</button>
+</div>
+      </div>
   </div>
 </template>
 
@@ -43,10 +32,22 @@ export default {
         return {
             newItem: "",
             groceryItems: [],
-            filter: {
-              ingredient: "",
-            }
+            
         }
+    },
+    methods: {
+      deleteIngredient(ingredientToDelete) {
+      this.groceryItems = this.groceryItems.filter((ingredient) => {
+        return ingredient !== ingredientToDelete;
+      });
+    },
+    createGroceryItem() {
+      this.groceryItems.unshift(this.newItem);
+      this.newItem = "";
+    },
+      printWindow: function () {
+        window.print();
+      }
     },
     created() {
       groceryListService.getIngredients(this.$store.state.user.userId).then((response) => {
@@ -72,54 +73,71 @@ export default {
 <style>
  .grocery-list {/*checkbox list of items*/
   border-radius: 6px;
-  padding: 20px;
-  margin: 3px;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   font-weight: normal;
   height:fit-content;
-  width:20%;
-  align-items: stretch;
+  width:100%;
+  padding: 20px;
+  /* align-items: stretch;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   margin-top: 15px;
-  margin-left: 15px;
+  margin-left: 30px; */
 } 
-/* .groceries {
-  border-radius: 6px;
-  padding: 1rem;
-  margin: 3px;
-  width: 30%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+#title {
+  font-family: "Sacramento", cursive;
+  font-size: 55px;
+  color: #ee3f0a;
+  text-shadow: 2px 2px 1px #1a0b06;
   font-weight: bold;
-} */
-.title{/*"Grocery List"*/
-font-family: 'Sacramento', cursive;
-font-size: 55px;
-color:#ee3f0a;
-text-shadow: 2px 2px 1px #1a0b06;
-font-weight: bold;
-margin-top: 20px;
-margin-left: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 .grocerylist-display {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
-#info {
+/* #info {
   font-weight: bold;
   font-size: 17px;
-}
-#groceries {
+} */
+/* #groceries {
   border-radius: 6px;
   padding: 1rem;
   margin: 2px;
-  width: 30%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   font-weight: bold;
+} */
+#print-grocery-list-button {
+  height: 3vh;
+  width: 5vw;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 1em;
+  background-color:  #56aa54;
+  color: #edeeeb;
+  border: none;
+}
+#new-ingred-box { /*adjust the size of the input box*/
+  width: 25vw;
+  height: 4vh;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 5px;
+}
+#button-save {
+  height: 3vh;
+  width: 5vw;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 1em;
+  background-color:  #56aa54;
+  color: #edeeeb;
+  border: none;
+  margin-bottom: 10px;
 }
 </style>

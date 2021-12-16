@@ -175,6 +175,38 @@ namespace Capstone.DAO
                 throw new Exception();
             }
         }
+        public MealRecipe UpdateRecipe(MealRecipe updatedRecipe)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE recipes SET recipe_name = '" + updatedRecipe.RecipeName + "', calories = '"+updatedRecipe.Calories+"', instructions = '" + updatedRecipe.Instructions + "', recipe_image = '" + updatedRecipe.Image + "' WHERE recipe_id = "+updatedRecipe.RecipeId+"", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE recipe_category SET category_id = (SELECT category_id FROM category WHERE category_name = '" + updatedRecipe.Category + "') WHERE recipe_id = " + updatedRecipe.RecipeId + "", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE recipe_dish_type SET dish_type_id = (SELECT dish_type_id FROM dish_type WHERE dish_type_name = '" + updatedRecipe.DishType + "') WHERE recipe_id = " + updatedRecipe.RecipeId + "", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                return GetRecipe(updatedRecipe.RecipeId);
+            }
+            catch(SqlException)
+            {
+                throw new Exception();
+            }
+        }
         public UserRecipe AddUserRecipe(UserRecipe newRecipe)
         {
             try
