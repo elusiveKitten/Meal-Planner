@@ -114,10 +114,12 @@ export default {
   font-weight: bold;
 } */
 #print-grocery-list-button {
-  height: 3vh;
-  width: 5vw;
   border-radius: 5px;
-  margin-top: 5px;
+  margin-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   font-size: 1em;
   background-color:  #56aa54;
   color: #edeeeb;
@@ -127,17 +129,22 @@ export default {
   width: 25vw;
   height: 4vh;
   background-color: rgba(255, 255, 255, 0.4);
-  margin: 5px;
+  margin-top: 10px;
 }
 #button-save {
-  height: 3vh;
-  width: 5vw;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   border-radius: 5px;
-  margin: 5px;
+  margin-top: 10px;
   font-size: 1em;
   background-color:  #56aa54;
   color: #edeeeb;
   border: none;
   margin-bottom: 10px;
+}
+.delete{
+  color: red;
 }
 </style>

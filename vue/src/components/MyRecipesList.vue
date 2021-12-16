@@ -12,13 +12,14 @@
         v-bind:key="recipe.userId">
         <div id="info">
         <h2 id="recipe-name">{{recipe.recipeName}}</h2>
-        <div id="mealplan-selection">
-            <select id="mealplan-dropdown" v-model="recipeAndPlan.mealPlanId" required>
-                <option v-for="mealPlan in mealPlans" v-bind:value="mealPlan.mealPlanId" v-bind:key="mealPlan.mealPlanId">
+        <div id="mealplan-selection">Meal Plan Selection:
+            <select id="mealplan-dropdown"  v-model="recipeAndPlan.mealPlanId" required>
+        
+                <option id="dropdown" v-for="mealPlan in mealPlans" v-bind:value="mealPlan.mealPlanId" v-bind:key="mealPlan.mealPlanId">
                     {{mealPlan.mealPlanName}}</option>
             </select>
         </div>
-        <button v-on:click="recipeAndPlan.recipeId=recipe.recipeId; addRecipe(recipeAndPlan)">Add Recipe to Selected Meal Plan</button>
+        <button id="add-btn" v-on:click="recipeAndPlan.recipeId=recipe.recipeId; addRecipe(recipeAndPlan)">Add Recipe to Selected Meal Plan</button>
 
 
         <router-link id="link-to-detail" :to="{ name: 'recipe-detail', params: { id: recipe.recipeId } }">Recipe Details</router-link>
@@ -115,9 +116,7 @@ margin-left: 20px;
   border-radius: 6px;
   padding: 1rem;
   margin: 10px;
-  display:flex;
-  justify-content: space-between;
-  width: 35%;
+  width: 40%;
   background-color: rgba(0,0,0,0.5);
   font-weight:bold;
 }
@@ -132,30 +131,59 @@ margin-left: 20px;
     height: 150px;
     border-radius: 5px;
 }
-.recipe h3{
+.recipe h3{/*the category*/
     height:fit-content;
     background-color: #56aa54;
     padding: 2px;
     border-radius: 5px;
     color: white;
+    font-size: 16px;
+    justify-content: flex-end;
+    margin-top: 5px;
 }
 #link-to-detail {
-  font-weight: bold;
-  color: #56aa54;
-  font-size: 18px;
+  font-weight: normal;
+  color: white;
+  font-size: 16px;
+}
+#link-to-detail:hover{
+    color: #56aa54;
 }
 #recipe-name {
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family:'Sacramento', cursive;
   font-weight: bold;
-  font-size: 24px;
-  text-shadow: 1px 1px 5px #ee3f0a;
-  color: white;
+  font-size: 40px;
+  text-shadow: 2px 2px 2px black;
+  color:#ee3f0a;
   margin-bottom: -20px;
   width:fit-content;
 }
-#info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+#mealplan-selection{
+    margin-top: -50px;
+    font-weight: normal;
+    font-size: 16px;
+}
+#mealplan-dropdown{
+    width: 200px;
+    color:#ee3f0a;
+}
+#add-btn{
+    height:fit-content;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    font-size: 16px;
+}
+#add-btn:hover{
+    background-color:  #56aa54;
+}
+#dropdown{
+    background-color:rgba(255, 255, 255, 0.4);
+}
+#info{
+    display: flex;
+    flex-direction: column;
 }
 </style>

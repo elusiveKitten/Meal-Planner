@@ -9,7 +9,7 @@
         <p>Category: {{ recipe.category }}</p>
         <p>Instructions:</p>
         <p>{{ recipe.instructions }}</p>
-        <button class="button is-primary" @click.prevent="addToMyRecipes">Add To My Recipes</button>
+        <button class="button" @click="addToMyRecipes">Add To My Recipes</button>
       <h4 v-show="success">Successfully added to My Recipes</h4>
       <h4 v-show="error">There was an error adding the recipe to My Recipes</h4>
       </div>

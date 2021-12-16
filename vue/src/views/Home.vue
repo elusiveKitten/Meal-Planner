@@ -7,7 +7,7 @@
       <h1 id="welcome">Welcome to Meal Planner!</h1>
       <p id="theWhat">Meal Planner was designed to alleviate the pain associated with the question, "What's for dinner?" Our goal is to make it easier to design your menu for the week - You can browse our varied selection of recipes or add your own recipes to the site. Looking for easy meals only? Just use our dropdown bar to filter your results! You can design a meal plan that includes all your recipes for one night or even a whole week.</p>
       <img id="recipe-pic" src="../views/recipes_img.jpg">
-      <p id="whoWeAre">Have an ingredient in your pantry you want to use up? Search our recipes by ingredient and pull up recipes that use it! You can create a grocery list right on our site and find a grocery store nearby. Life can get busy - let us help you simplify dinner.</p>
+      <p id="whoWeAre">In order to customize your experience further, you can add your own ingredients into our extensive database. A grocery list is created for you based on the meals in your meal plan, but feel free to delete items you already have or add on to the list with other groceries you may need. We have also included a map for you to find a grocery store nearby. Life can get busy - let us help you simplify dinner.</p>
       </div>
     </body>
   
@@ -42,7 +42,6 @@ export default {
 #theWhat{/*put a short blurb here about what MealPlanner does*/
   width: 750px;
   text-align: center;
-  margin-bottom: 20px;
   grid-area: theWhat;
   margin-left: -90px;
   font-size: 20px;
