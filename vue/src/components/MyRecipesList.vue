@@ -19,6 +19,8 @@
             </select>
         </div>
         <button id="add-btn" v-on:click="recipeAndPlan.recipeId=recipe.recipeId; addRecipe(recipeAndPlan)">Add Recipe to Selected Meal Plan</button>
+        <h4 v-show="success">Successfully added to My Recipes</h4>
+        <h4 v-show="error">There was an error adding the recipe to My Recipes</h4>
 
 
         <router-link id="link-to-detail" :to="{ name: 'recipe-detail', params: { id: recipe.recipeId } }">Recipe Details</router-link>
@@ -51,7 +53,10 @@ export default {
               recipeName: "",
               dishType: "",
               category: "",
-          }
+          },
+           errorMsg:"",
+           success: false,
+           error: false
       };
   },
   created(){
@@ -91,11 +96,27 @@ export default {
           recipeService.addRecipeToMealPlan(recipeAndPlan).then((response) =>{
               if(response.status === 201){
                   console.log("Recipe successfully added to Meal Plan");
+                  this.success = true;
               }
           })
+          .catch((error) => {
+              this.handleErrorResponse(error, "adding");
+              this.error = true;
+          });
+      },
+      handleErrorResponse(error, verb) {
+          if(error.response) {
+              this.errorMsg = 
+              "Error " + verb + " recipe. Response received was '" +
+              error.response.statusText + " '.";
+          }else if(error.request) {
+              this.errorMsg = "Error " + verb + " recipe.Server could not be reached.";
+          }else{
+              this.errorMsg = "Error " + verb + "recipe. Request could not be created.";
+          }
       },
 
-  }
+  },
   
   
 };
