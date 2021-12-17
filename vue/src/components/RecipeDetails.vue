@@ -7,8 +7,8 @@
         <p>Dish Type: {{ recipe.dishType }}</p>
         <p>Calories: {{ recipe.calories }}</p>
         <p>Category: {{ recipe.category }}</p>
-        <p>Instructions:</p>
-        <p>{{ recipe.instructions }}</p>
+        <p id="instructions">Instructions:</p>
+        <p id="text">{{ recipe.instructions }}</p>
         <button class="button" @click="addToMyRecipes">Add To My Recipes</button>
       <h4 v-show="success">Successfully added to My Recipes</h4>
       <h4 v-show="error">There was an error adding the recipe to My Recipes</h4>
@@ -106,6 +106,7 @@ h2 {
   background-color:  rgba(0,0,0,0.5);
   color: white;
   font-weight: bold;
+  display: flex;
   
   
 }
@@ -130,5 +131,11 @@ p {
 button{
   margin-bottom: 10px;
   width: fit-content;
+}
+#instructions{
+  margin-top: 20px;
+}
+#text{
+  margin-bottom: 20px;
 }
 </style>
