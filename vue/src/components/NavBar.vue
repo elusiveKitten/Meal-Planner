@@ -49,7 +49,7 @@
               <a
                 class="navbar-item"
               >
-                <router-link v-bind:to="{ path: '/recipe/user/userId', params: {userId:this.$store.state.user.userId} }"
+                <router-link v-bind:to="{ name: 'my-recipes', params: {userId:this.$store.state.user.userId} }"
                   >My Recipes</router-link
                 >
               </a>
@@ -65,7 +65,7 @@
           <div class="navbar-item">
             <router-link
               class="button"
-              v-bind:to="{ name: 'my-meal-plans' }"
+              v-bind:to="{ name: 'my-meal-plans',params: {userId:this.$store.state.user.userId} }"
               ><i class="fas fa-drumstick-bite"></i>My Meal Plans</router-link
             >
           </div>

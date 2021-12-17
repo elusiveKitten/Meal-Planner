@@ -127,6 +127,7 @@ export default {
         recipeService.createRecipe(newRecipe).then((response) => {
           if (response.status === 201) {
             console.log("Recipe was successfully added.");
+            this.showForm = false;
           }
         });
     //   } else {

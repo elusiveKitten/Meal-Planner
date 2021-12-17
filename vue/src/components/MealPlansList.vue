@@ -17,7 +17,9 @@
           autocomplete="off"
           placeholder="Meal Plan Name"
         />
-        <button id="saveBtn" v-on:click="submitForm">Save</button>
+        <button id="saveBtn" v-on:click.prevent="submitForm">Save</button>
+        <h4 class="response" v-show="success">Successfully created Meal Plan</h4>
+        <h4 class="response" v-show="error">There was an creating the Meal Plan</h4>
       </form>
     </div>
     
@@ -53,7 +55,9 @@ export default {
       mealPlans: [],
       mealPlan:{
         mealPlanName: ""
-      }
+      },
+      success: false,
+      error: false
     };
   },
   created() {
@@ -71,8 +75,14 @@ export default {
       mealPlanService.createMealPlan(newMealPlan).then((response)=>{
         if(response.status === 201){
           console.log("success");
+          this.success = true;
         }
       })
+      .catch((error) => {
+          
+          this.error= true;
+          console.log(error);
+        });
     }
   }
 };
@@ -132,5 +142,11 @@ export default {
   font-size: 40px;
   font-weight: bold;
   color: #56aa54;
+  margin-right: 15px;
+}
+.response{
+  margin-left: 350px;
+  color:green;
+  font-weight: bolder;
 }
 </style>
