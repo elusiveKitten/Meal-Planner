@@ -54,6 +54,7 @@ export default {
       if(confirm("Are you sure you want to delete this recipe from the meal plan?")){
         recipeService.deleteRecipeFromMealPlan(mealPlanRecipe).then(()=>{
           console.log("deleted recipe from mealplan")
+          
         })
       }
     }

@@ -12,7 +12,7 @@ namespace Capstone.Controllers
 {
     [Route("recipe/")]
     [ApiController]
-    [Authorize]
+
     public class RecipeController : ControllerBase
     {
         private readonly IRecipeDao recipeDao;
