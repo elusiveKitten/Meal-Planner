@@ -15,6 +15,7 @@
           type="text"
           v-model="mealPlan.mealPlanName"
           autocomplete="off"
+          placeholder="Meal Plan Name"
         />
         <button id="saveBtn" v-on:click="submitForm">Save</button>
       </form>

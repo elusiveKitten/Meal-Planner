@@ -15,7 +15,13 @@ export default{
     createRecipe(newRecipe){
         return http.post(`/recipe/create`, newRecipe);
     },
+    deleteRecipeFromMealPlan(mealPlanRecipe){
+        return http.delete(`/recipe/mealplan/${mealPlanRecipe.mealPlanId}/recipe/${mealPlanRecipe.recipeId}`,mealPlanRecipe)
+    },
     addRecipeToMealPlan(recipeAndPlan){
         return http.post('recipe/mealplan/add', recipeAndPlan)
-    }
+    },
+    // updateRecipe(newUserRecipe, recipeId){
+    //     return http.put(`/recipe/edit/${recipeId}`, newUserRecipe)
+    // }
 }
