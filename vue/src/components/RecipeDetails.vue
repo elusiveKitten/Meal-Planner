@@ -9,7 +9,8 @@
         <p>Category: {{ recipe.category }}</p>
         <p>Instructions:</p>
         <p>{{ recipe.instructions }}</p>
-        <button class="button" @click="addToMyRecipes">Add To My Recipes</button>
+        <button class="button" @click.prevent="addToMyRecipes">Add To My Recipes</button>
+        <new-recipe-form v-bind:recipeId="recipe.recipeId" v-if="recipe.recipeId" />
       <h4 v-show="success">Successfully added to My Recipes</h4>
       <h4 v-show="error">There was an error adding the recipe to My Recipes</h4>
       </div>
@@ -27,6 +28,7 @@
 <script>
 import "bulma/css/bulma.css";
 import recipeService from "../services/RecipeService";
+import NewRecipeForm from "../components/NewRecipeForm.vue"
 export default {
   data() {
     return {
@@ -39,6 +41,9 @@ export default {
       success: false,
       error: false
     };
+  },
+  components:{
+    NewRecipeForm
   },
   created() {
     recipeService.getRecipeById(this.$route.params.id).then((response) => {

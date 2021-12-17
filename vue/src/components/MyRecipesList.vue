@@ -5,7 +5,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
         <h1 class="title">My Recipes</h1>
         <new-recipe-form />
-        <my-recipe-service />
         <div class= "recipes">
         <div class="recipe"
         v-for="recipe in filteredList"
@@ -38,7 +37,6 @@ import recipeService from '../services/RecipeService';
 
 export default {
     components:{
-        myRecipeService,
         NewRecipeForm
     },
   data(){

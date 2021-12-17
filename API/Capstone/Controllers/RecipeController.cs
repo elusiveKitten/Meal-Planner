@@ -105,9 +105,12 @@ namespace Capstone.Controllers
             }
             return StatusCode(403);
         }
-        [HttpDelete("mealplan/delete")]
-        public IActionResult DeleteRecipeFromMealPlan(AddedMealRecipe delete)
+        [HttpDelete("mealplan/{mpId}/recipe/{rId}")]
+        public IActionResult DeleteRecipeFromMealPlan(int mpId, int rId)
         {
+            AddedMealRecipe delete = new AddedMealRecipe();
+            delete.MealPlanId = mpId;
+            delete.RecipeId = rId;
             bool final = recipeDao.DeleteRecipeFromMealPlan(delete);
             if(final == true)
             {

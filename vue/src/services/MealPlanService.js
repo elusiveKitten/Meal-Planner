@@ -11,6 +11,6 @@ export default{
     },
     createMealPlan(newMealPlan){
         return http.post(`/mealplan/create`, newMealPlan)
-    }
-   
+    },
+    
 }
